@@ -1,7 +1,9 @@
 package by.chitatel.ui;
 
+import by.chitatel.ui.constants.ExpectedErrorMessages;
 import by.chitatel.ui.modals.ErrorsModal;
 import by.chitatel.ui.pages.ChitatelPage;
+import by.chitatel.ui.utils.Passwords;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +19,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .inputPassword("123456")
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
-        String expectedErrorMessage = "Неправильный e-mail или пароль!";
+        String expectedErrorMessage = ExpectedErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG;
 
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
@@ -31,7 +33,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .inputEmail("user@test.com")
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
-        String expectedErrorMessage = "Вы не указали \"Пароль\"";
+        String expectedErrorMessage = ExpectedErrorMessages.PASSWORD_WAS_NOT_INPUT;
 
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
@@ -45,7 +47,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .inputPassword("123456")
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
-        String expectedErrorMessage = "Вы не указали \"Email\"";
+        String expectedErrorMessage = ExpectedErrorMessages.EMAIL_WAS_NOT_INPUT;
 
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
@@ -58,7 +60,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .clickTabEmail()
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
-        String expectedErrorMessage = "Вы не указали \"Email\"\nВы не указали \"Пароль\"";
+        String expectedErrorMessage = ExpectedErrorMessages.EMAIL_AND_PASSWORD_WERE_NOT_INPUT;
 
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
@@ -73,7 +75,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .inputPassword("123456")
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
-        String expectedErrorMessage = "Неправильный e-mail или пароль!";
+        String expectedErrorMessage = ExpectedErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG;
 
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
@@ -84,9 +86,9 @@ public class LoginWithEmailTest extends BaseTest{
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
-                .performLogin("incorrectemail".repeat(50)+"@gmail.com", "1a@2b#3c%".repeat(50), false);
+                .performLogin("incorrectemail".repeat(50)+"@gmail.com", Passwords.generatePassword(500), false);
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
-        String expectedErrorMessage = "Неправильный e-mail или пароль!";
+        String expectedErrorMessage = ExpectedErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG;
 
         Assertions.assertEquals(expectedErrorMessage, actualErrorMessage);
     }
