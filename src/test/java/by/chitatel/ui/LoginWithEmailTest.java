@@ -16,7 +16,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .clickLoginButton()
                 .clickTabEmail()
                 .inputEmail("user@test.com")
-                .inputPassword("123456")
+                .inputPassword(Passwords.generatePassword(10))
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
         String expectedErrorMessage = ExpectedErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG;
@@ -44,7 +44,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
-                .inputPassword("123456")
+                .inputPassword(Passwords.generatePassword(10))
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
         String expectedErrorMessage = ExpectedErrorMessages.EMAIL_WAS_NOT_INPUT;
@@ -72,7 +72,7 @@ public class LoginWithEmailTest extends BaseTest{
                 .clickLoginButton()
                 .clickTabEmail()
                 .inputEmail("user@test.")
-                .inputPassword("123456")
+                .inputPassword(Passwords.generatePassword(10))
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
         String expectedErrorMessage = ExpectedErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG;
