@@ -9,7 +9,7 @@ public class ErrorsModal extends AbstractBaseModal {
         super(driver);
     }
 
-    By textTitleBy = By.xpath("//h2");
+    By textTitleBy = By.xpath("//div[@class='sweet-alert showSweetAlert visible']//h2");
     By textMessageBy = By.xpath("//div[@class='alert alert-danger']/ul");
     By buttonOkBy = By.xpath("//button[@class='confirm']");
 
