@@ -33,6 +33,10 @@ public class Phone {
         return countryCode + operatorCode + phoneNumber;
     }
 
+    public String getFullPhoneNumberFormatted() {
+        return String.format("+%s(%s)%s", countryCode, operatorCode, phoneNumber);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
