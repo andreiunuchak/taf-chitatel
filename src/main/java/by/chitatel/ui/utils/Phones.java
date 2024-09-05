@@ -16,12 +16,16 @@ public class Phones {
 
     public static String generateIncorrectOperatorCode() {
         List<String> validOperatorCodes = new ArrayList<>(Arrays.asList("29", "33", "44", "25"));
-        String incorrectOperatirCode = "";
+        String incorrectOperatirCode;
         do {
             incorrectOperatirCode = "";
             incorrectOperatirCode += (int) ((Math.random() * 90) + 10);
         } while (validOperatorCodes.contains(incorrectOperatirCode));
         return incorrectOperatirCode;
+    }
+
+    public static String getMockedOperatorCode() {
+        return "00";
     }
 
     public static String getMockedPhoneNumber() {
