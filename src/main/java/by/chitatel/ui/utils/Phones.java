@@ -1,6 +1,6 @@
 package by.chitatel.ui.utils;
 
-import by.chitatel.ui.utils.objects.Phone;
+import by.chitatel.ui.objects.Phone;
 
 import java.util.ArrayList;
 import java.util.Arrays;

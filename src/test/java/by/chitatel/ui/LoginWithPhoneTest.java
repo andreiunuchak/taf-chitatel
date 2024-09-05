@@ -5,7 +5,7 @@ import by.chitatel.ui.modals.ErrorsModal;
 import by.chitatel.ui.pages.ChitatelPage;
 import by.chitatel.ui.utils.Passwords;
 import by.chitatel.ui.utils.Phones;
-import by.chitatel.ui.utils.objects.Phone;
+import by.chitatel.ui.objects.Phone;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
