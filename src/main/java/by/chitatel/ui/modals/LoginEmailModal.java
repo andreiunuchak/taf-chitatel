@@ -17,7 +17,7 @@ public class LoginEmailModal extends AbstractBaseModal {
     By inputFieldEmailBy = By.xpath("//input[@name='email']");
     By inputFieldPasswordBy = By.xpath("//input[@name='password']");
     By buttonForgotPassword = By.xpath("//a[@href='https://chitatel.by/password/reset']");
-    By checkboxRememberMeBy = By.xpath("//input[@name='remember_me']");
+    By checkboxRememberMeBy = By.xpath("//div[@class='w-tab-content _js-input-tab-content _active']//div[@class='input checkbox']/div/div");
     By buttonLoginBy = By.xpath("//input[@id='send-login']");
     By buttonCloseBy = By.xpath("//img[@class='close']");
 

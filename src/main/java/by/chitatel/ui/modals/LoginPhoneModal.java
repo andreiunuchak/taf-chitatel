@@ -15,7 +15,7 @@ public class LoginPhoneModal extends AbstractBaseModal {
     By inputFieldPhoneBy = By.xpath("//input[@name='tel']");
     By butonSendPasswordBy = By.xpath("//input[@id='send-code-login']");
     By inputFieldPasswordBy = By.xpath("//input[@name='password_phone']");
-    By checkboxRememberMeBy = By.xpath("//input[@name='remember_me_phone']");
+    By checkboxRememberMeBy = By.xpath("//div[@class='w-tab-content _js-input-tab-content _active']//div[@class='input checkbox']/div/div");
     By buttonLoginBy = By.xpath("//input[@id='send-login-by-phone']");
     By buttonCloseBy = By.xpath("//img[@class='close']");
 
