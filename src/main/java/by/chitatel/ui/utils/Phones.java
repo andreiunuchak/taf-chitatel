@@ -31,7 +31,7 @@ public class Phones {
     }
 
     private static String getCorrectCountryCode() {
-        return "+375";
+        return "375";
     }
 
     private static String getCorrectOperatorCode() {
