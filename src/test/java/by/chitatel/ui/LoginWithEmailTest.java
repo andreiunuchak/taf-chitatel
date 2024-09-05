@@ -5,7 +5,7 @@ import by.chitatel.ui.pages.ChitatelPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class LoginTest extends BaseTest{
+public class LoginWithEmailTest extends BaseTest{
 
     @Test
     public void testLoginWithIncorrectEmailAndPassword(){
