@@ -1,6 +1,7 @@
 package by.chitatel.ui.pages;
 
 import by.chitatel.ui.modals.LoginPhoneModal;
+import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,7 +16,7 @@ public class ChitatelPage extends AbstractBasePage {
 
 
     public LoginPhoneModal clickLoginButton() {
-        driver.findElement(loginButtonBy).click();
+        Waiters.waitForElementBeingClickable(driver, loginButtonBy).click();
         return new LoginPhoneModal(driver);
     }
 
