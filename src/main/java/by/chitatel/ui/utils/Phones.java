@@ -1,20 +1,45 @@
 package by.chitatel.ui.utils;
 
+import by.chitatel.ui.utils.objects.Phone;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Phones {
-    public static String getCorrectCountryCode() {
+    public static Phone generateValidPhoneNumber(){
+        return new Phone(getCorrectCountryCode(), getCorrectOperatorCode(), generatePhoneNumber(7));
+    }
+
+    public static Phone generateIncorrectPhoneNumber() {
+        return new Phone(getCorrectCountryCode(), generateIncorrectOperatorCode(), generatePhoneNumber(7));
+    }
+
+    public static Phone generateInvalidPhoneNumber(int minLength, int maxLength) {
+        if (minLength < 0) {
+            minLength = 0;
+        }
+        if (maxLength < minLength) {
+            maxLength = minLength;
+        }
+        int length = (int) (Math.random() * (maxLength - minLength)) + minLength;
+        return new Phone(getCorrectCountryCode(), generateIncorrectOperatorCode(), generatePhoneNumber(length));
+    }
+
+    public static Phone generateMockPhoneNumber(){
+        return new Phone(getCorrectCountryCode(), "00", "0000000");
+    }
+
+    private static String getCorrectCountryCode() {
         return "+375";
     }
 
-    public static String getCorrectOperatorCode() {
+    private static String getCorrectOperatorCode() {
         String[] validOperatorCodes = {"29", "33", "44", "25"};
         return validOperatorCodes[(int) (Math.random() * validOperatorCodes.length)];
     }
 
-    public static String generateIncorrectOperatorCode() {
+    private static String generateIncorrectOperatorCode() {
         List<String> validOperatorCodes = new ArrayList<>(Arrays.asList("29", "33", "44", "25"));
         String incorrectOperatirCode;
         do {
@@ -24,15 +49,7 @@ public class Phones {
         return incorrectOperatirCode;
     }
 
-    public static String getMockedOperatorCode() {
-        return "00";
-    }
-
-    public static String getMockedPhoneNumber() {
-        return "0000000";
-    }
-
-    public static String generatePhoneNumber(int length) {
+    private static String generatePhoneNumber(int length) {
         if (length <= 0) {
             return "";
         }
