@@ -21,9 +21,9 @@ public class LoginEmailModal extends AbstractBaseModal {
     By buttonLoginBy = By.xpath("//input[@id='send-login']");
     By buttonCloseBy = By.xpath("//img[@class='close']");
 
-    public void clickTabEmail() {
+    public LoginEmailModal clickTabEmail() {
         Waiters.waitForElementBeingClickable(driver, tabButtonEmailBy).click();
-        return;
+        return this;
     }
 
     public LoginEmailModal clickTabPhone() {
