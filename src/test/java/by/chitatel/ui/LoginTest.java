@@ -29,7 +29,6 @@ public class LoginTest extends BaseTest{
                 .clickLoginButton()
                 .clickTabEmail()
                 .inputEmail("user@test.com")
-                .inputPassword("")
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
         String expectedErrorMessage = "Вы не указали \"Пароль\"";
@@ -43,7 +42,6 @@ public class LoginTest extends BaseTest{
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
-                .inputEmail("")
                 .inputPassword("123456")
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
@@ -58,8 +56,6 @@ public class LoginTest extends BaseTest{
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
-                .inputEmail("")
-                .inputPassword("")
                 .clickLoginButton();
         String actualErrorMessage = new ErrorsModal(driver).getErrorMessage();
         String expectedErrorMessage = "Вы не указали \"Email\"\nВы не указали \"Пароль\"";
