@@ -45,7 +45,7 @@ public class LoginPhoneModal extends AbstractBaseModal {
     }
 
     public LoginPhoneModal clickRememberMeCheckbox() {
-        Waiters.waitForElementPresence(driver, checkboxRememberMeBy).click();
+        Waiters.waitForElementBeingClickable(driver, checkboxRememberMeBy).click();
         return this;
     }
 
