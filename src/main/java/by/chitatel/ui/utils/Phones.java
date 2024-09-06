@@ -5,8 +5,16 @@ import by.chitatel.ui.objects.Phone;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class Phones {
+    private static final String VALID_COUNTRY_CODE = "375";
+    private static final List<String> VALID_OPERATOR_CODES = new ArrayList<>(Arrays.asList("29", "33", "44", "25"));
+    private static final String MOCKED_OPERATOR_CODE = "00";
+    private static final String MOCKED_PHONE_NUMBER = "0000000";
+
+    private static final Random RANDOM = new Random();
+
     public static Phone generateValidPhoneNumber(){
         return new Phone(getCorrectCountryCode(), getCorrectOperatorCode(), generatePhoneNumber(7));
     }
@@ -22,40 +30,36 @@ public class Phones {
         if (maxLength < minLength) {
             maxLength = minLength;
         }
-        int length = (int) (Math.random() * (maxLength - minLength)) + minLength;
+        int length = RANDOM.nextInt(maxLength - minLength) + minLength;
         return new Phone(getCorrectCountryCode(), generateIncorrectOperatorCode(), generatePhoneNumber(length));
     }
 
     public static Phone generateMockPhoneNumber(){
-        return new Phone(getCorrectCountryCode(), "00", "0000000");
+        return new Phone(getCorrectCountryCode(), MOCKED_OPERATOR_CODE, MOCKED_PHONE_NUMBER);
     }
 
     private static String getCorrectCountryCode() {
-        return "375";
+        return VALID_COUNTRY_CODE;
     }
 
     private static String getCorrectOperatorCode() {
-        String[] validOperatorCodes = {"29", "33", "44", "25"};
-        return validOperatorCodes[(int) (Math.random() * validOperatorCodes.length)];
+        return VALID_OPERATOR_CODES.get(RANDOM.nextInt(VALID_OPERATOR_CODES.size()));
     }
 
     private static String generateIncorrectOperatorCode() {
-        List<String> validOperatorCodes = new ArrayList<>(Arrays.asList("29", "33", "44", "25"));
         String incorrectOperatirCode;
         do {
             incorrectOperatirCode = "";
-            incorrectOperatirCode += (int) ((Math.random() * 90) + 10);
-        } while (validOperatorCodes.contains(incorrectOperatirCode));
+            incorrectOperatirCode += RANDOM.nextInt(90) + 10;
+        } while (VALID_OPERATOR_CODES.contains(incorrectOperatirCode));
         return incorrectOperatirCode;
     }
 
     private static String generatePhoneNumber(int length) {
-        if (length <= 0) {
-            return "";
-        }
+        length = Math.max(length, 1);
         StringBuilder phoneNumber = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            phoneNumber.append((int) (Math.random() * 10));
+            phoneNumber.append(RANDOM.nextInt(10));
         }
         return phoneNumber.toString();
     }
