@@ -3,7 +3,6 @@ package by.chitatel.ui.utils;
 import java.util.Random;
 
 public class Passwords {
-    private static final Random RANDOM = new Random();
     private static final char[] ALL_CHARS = {
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -16,7 +15,7 @@ public class Passwords {
     };
 
     public static String generatePassword() {
-        return generatePassword(RANDOM.nextInt(12) + 8);
+        return generatePassword(new Random().nextInt(12) + 8);
     }
 
     public static String generatePassword(int length) {
@@ -25,7 +24,7 @@ public class Passwords {
         }
         StringBuilder password = new StringBuilder();
         for (int i = 0; i < length; i++) {
-            password.append(ALL_CHARS[RANDOM.nextInt(ALL_CHARS.length)]);
+            password.append(ALL_CHARS[new Random().nextInt(ALL_CHARS.length)]);
         }
         return password.toString();
     }

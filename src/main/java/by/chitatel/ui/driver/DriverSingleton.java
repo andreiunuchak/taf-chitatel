@@ -10,8 +10,8 @@ public class DriverSingleton {
     private DriverSingleton() {
     }
 
-    public static WebDriver getWebDriver(){
-        if(driver==null) {
+    public static WebDriver getWebDriver() {
+        if (driver == null) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--disable-search-engine-choice-screen");
             options.addArguments("--start-maximized");
@@ -22,6 +22,6 @@ public class DriverSingleton {
 
     public static void closeDriver() {
         driver.quit();
-        driver=null;
+        driver = null;
     }
 }

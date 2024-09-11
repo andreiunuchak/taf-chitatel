@@ -8,11 +8,6 @@ import org.openqa.selenium.WebDriver;
 public class BaseTest {
     WebDriver driver;
 
-    @BeforeEach
-    public void setUpDriver(){
-        driver = DriverSingleton.getWebDriver();
-    }
-
     @AfterEach
     public void closeDriver(){
         DriverSingleton.closeDriver();

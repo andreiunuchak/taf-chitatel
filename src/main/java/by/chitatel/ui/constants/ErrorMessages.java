@@ -1,6 +1,6 @@
 package by.chitatel.ui.constants;
 
-public abstract class ExpectedErrorMessages {
+public abstract class ErrorMessages {
     public static final String PHONE_NOT_FOUND = "Такой телефон не найден";
     public static final String PASSWORD_SEND_TO_PHONE_NUMBER = "Пароль отправлен на номер %s";
     public static final String PASSWORD_DOES_NOT_MATCH = "Пароль не совпадает";
