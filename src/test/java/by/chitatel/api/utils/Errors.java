@@ -12,7 +12,6 @@ public class Errors {
     }
 
     public static PhoneLoginErrors getErrorsFromPhoneLoginResponse(Response response) {
-        response.then().log().body();
         return response.then().extract().as(PhoneLoginResponse.class).getErrors();
     }
 }
