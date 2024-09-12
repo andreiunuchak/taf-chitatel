@@ -11,13 +11,28 @@ public class FormParameters {
         return this;
     }
 
+    public FormParameters setPhone(Object phone) {
+        formParams.put("tel", phone);
+        return this;
+    }
+
     public FormParameters setPassword(Object password) {
         formParams.put("password", password);
         return this;
     }
 
+    public FormParameters setPhonePassword(Object password) {
+        formParams.put("password_phone", password);
+        return this;
+    }
+
     public FormParameters setRememberMe(Object rememberMe) {
         formParams.put("remember_me", rememberMe);
+        return this;
+    }
+
+    public FormParameters setPhoneRememberMe(Object rememberMe) {
+        formParams.put("remember_me_phone", rememberMe);
         return this;
     }
 
