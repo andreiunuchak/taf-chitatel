@@ -3,7 +3,6 @@ package by.chitatel.ui.pages;
 import by.chitatel.ui.modals.LoginPhoneModal;
 import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class ChitatelPage extends BasePage {
     private final String BASE_URL = "https://chitatel.by/";

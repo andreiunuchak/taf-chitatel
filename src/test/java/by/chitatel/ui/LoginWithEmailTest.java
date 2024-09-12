@@ -8,10 +8,10 @@ import by.chitatel.ui.utils.Passwords;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class LoginWithEmailTest extends BaseTest{
+public class LoginWithEmailTest extends BaseTest {
 
     @Test
-    public void testLoginWithIncorrectEmailAndPassword(){
+    public void testLoginWithIncorrectEmailAndPassword() {
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()
@@ -23,7 +23,7 @@ public class LoginWithEmailTest extends BaseTest{
     }
 
     @Test
-    public void testLoginWithIncorrectEmailAndEmptyPassword(){
+    public void testLoginWithIncorrectEmailAndEmptyPassword() {
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()
@@ -34,7 +34,7 @@ public class LoginWithEmailTest extends BaseTest{
     }
 
     @Test
-    public void testLoginWithEmptyEmailAndIncorrectPassword(){
+    public void testLoginWithEmptyEmailAndIncorrectPassword() {
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()
@@ -45,7 +45,7 @@ public class LoginWithEmailTest extends BaseTest{
     }
 
     @Test
-    public void testLoginWithEmptyEmailAndEmptyPassword(){
+    public void testLoginWithEmptyEmailAndEmptyPassword() {
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()
@@ -55,7 +55,7 @@ public class LoginWithEmailTest extends BaseTest{
     }
 
     @Test
-    public void testLoginWithInvalidEmailAndIncorrectPassword(){
+    public void testLoginWithInvalidEmailAndIncorrectPassword() {
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()
@@ -67,7 +67,7 @@ public class LoginWithEmailTest extends BaseTest{
     }
 
     @Test
-    public void testLoginWithLongEmailAndLongPassword(){
+    public void testLoginWithLongEmailAndLongPassword() {
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()

@@ -2,7 +2,6 @@ package by.chitatel.ui.pages;
 
 import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class ForgotPasswordPage extends BasePage {
     private final By inputFieldEmail = By.xpath("//input[@id='email']");

@@ -4,7 +4,6 @@ import by.chitatel.ui.pages.ChitatelPage;
 import by.chitatel.ui.pages.ForgotPasswordPage;
 import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class LoginEmailModal extends BaseModal {
     private final By tabButtonEmail = By.xpath("//div[@class='w-swith-tabs margin-bottom-5 _js-bouble-tabs']/a[1]");

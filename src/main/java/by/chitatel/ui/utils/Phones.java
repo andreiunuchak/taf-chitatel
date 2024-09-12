@@ -18,7 +18,7 @@ public class Phones {
 
     private static final Random RANDOM = new Random();
 
-    public static Phone generateValidPhoneNumber(){
+    public static Phone generateValidPhoneNumber() {
         return new Phone(getCorrectCountryCode(), getCorrectOperatorCode(), generatePhoneNumber(7));
     }
 
@@ -37,7 +37,7 @@ public class Phones {
         return new Phone(getCorrectCountryCode(), generateIncorrectOperatorCode(), generatePhoneNumber(length));
     }
 
-    public static Phone generateMockPhoneNumber(){
+    public static Phone generateMockPhoneNumber() {
         return new Phone(getCorrectCountryCode(), MOCKED_OPERATOR_CODE, MOCKED_PHONE_NUMBER);
     }
 

@@ -80,7 +80,7 @@ public class LoginWithPhoneTest extends BaseTest {
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()
-                .performLogin(Phones.generateInvalidPhoneNumber(1,6).getPhoneNumberWithOperatorCode(), Passwords.generatePassword(10), true);
+                .performLogin(Phones.generateInvalidPhoneNumber(1, 6).getPhoneNumberWithOperatorCode(), Passwords.generatePassword(10), true);
         Assertions.assertEquals(ErrorMessages.PHONE_NUMBER_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
     }
 }
