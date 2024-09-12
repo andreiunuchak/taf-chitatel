@@ -24,8 +24,4 @@ public class Responses {
     public static int getStatusCodeFromResponse(Response response) {
         return response.getStatusCode();
     }
-
-    public static String getValueFromResponse(Response response, String key) {
-        return response.getBody().jsonPath().getString(key);
-    }
 }
