@@ -16,9 +16,6 @@ public class LoginEmailModal extends BaseModal {
     private final By buttonLogin = By.xpath("//input[@id='send-login']");
     private final By buttonClose = By.xpath("//img[@class='close']");
 
-    public LoginEmailModal() {
-    }
-    
     public LoginEmailModal clickTabEmail() {
         Waiters.waitForElementBeingClickable(driver, tabButtonEmail).click();
         return this;

@@ -8,10 +8,6 @@ public class ForgotPasswordPage extends BasePage {
     private final By inputFieldEmail = By.xpath("//input[@id='email']");
     private final By buttonSend = By.xpath("//input[@id='send-reset']");
 
-//    public ForgotPasswordPage(WebDriver driver) {
-//        super(driver);
-//    }
-
     public ForgotPasswordPage inputEmail(String email) {
         Waiters.waitForElementPresence(driver, inputFieldEmail).sendKeys(email);
         return this;

@@ -9,9 +9,6 @@ public class ErrorModal extends BaseModal {
     private final By errorMessage = By.xpath("//div[@class='alert alert-danger']/ul");
     private final By buttonOk = By.xpath("//button[@class='confirm']");
 
-    public ErrorModal() {
-    }
-
     public String getTitle(){
         return Waiters.waitForElementPresence(driver, title).getText();
     }
