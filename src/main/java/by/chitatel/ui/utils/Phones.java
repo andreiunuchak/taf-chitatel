@@ -1,5 +1,8 @@
 package by.chitatel.ui.utils;
 
+import by.chitatel.ui.enums.CountryCodes;
+import by.chitatel.ui.enums.OperatorCodes;
+import by.chitatel.ui.enums.PhoneNumbers;
 import by.chitatel.ui.objects.Phone;
 
 import java.util.ArrayList;
@@ -8,10 +11,10 @@ import java.util.List;
 import java.util.Random;
 
 public class Phones {
-    private static final String VALID_COUNTRY_CODE = "375";
-    private static final List<String> VALID_OPERATOR_CODES = new ArrayList<>(Arrays.asList("29", "33", "44", "25"));
-    private static final String MOCKED_OPERATOR_CODE = "00";
-    private static final String MOCKED_PHONE_NUMBER = "0000000";
+    private static final String VALID_COUNTRY_CODE = CountryCodes.BELARUS.getCode();
+    private static final List<String> VALID_OPERATOR_CODES = new ArrayList<>(Arrays.asList(OperatorCodes.VELCOM_OLD.getCode(), OperatorCodes.MTS.getCode(), OperatorCodes.VELCOM_NEW.getCode(), OperatorCodes.LIFE.getCode()));
+    private static final String MOCKED_OPERATOR_CODE = OperatorCodes.MOCKED.getCode();
+    private static final String MOCKED_PHONE_NUMBER = PhoneNumbers.MOCKED.getCode();
 
     private static final Random RANDOM = new Random();
 
