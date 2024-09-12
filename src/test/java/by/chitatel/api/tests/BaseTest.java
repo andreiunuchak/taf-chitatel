@@ -12,7 +12,7 @@ public class BaseTest {
 
     @BeforeEach
     public void getCSRFData() {
-        Response response = new Login().execute();
+        Response response = new Login().performRequest();
         csrfToken = Responses.getCSRFToken(response);
         cookies = Responses.getCookies(response);
     }

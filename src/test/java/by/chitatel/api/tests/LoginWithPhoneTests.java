@@ -16,7 +16,7 @@ public class LoginWithPhoneTests extends BaseTest {
     @Test
     public void testChitatelPhoneLogin() {
         Map<String, Object> formParams = new FormParameters().setPhone("+375(99)1111111").setPhonePassword("test").setPhoneRememberMe("1").build();
-        Response response = new LoginWithPhone().performRequestWithParamsTokenCookies(formParams, csrfToken, cookies);
+        Response response = new LoginWithPhone().performRequest(formParams, csrfToken, cookies);
         int statusCode = Responses.getStatusCodeFromResponse(response);
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 

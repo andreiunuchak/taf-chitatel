@@ -11,7 +11,7 @@ public interface RequestPerformer {
     Headers getHeaders();
 
     String getUriPath();
-    default Response performRequestWithParamsTokenCookies(Map<String, Object> formParams, String csrfToken, Cookies cookies) {
+    default Response performRequest(Map<String, Object> formParams, String csrfToken, Cookies cookies) {
         return RestAssured
                 .given()
                 .headers(getHeaders())
@@ -22,7 +22,7 @@ public interface RequestPerformer {
                 .post(getUriPath());
     }
 
-    default Response performRequestWithParamsToken(Map<String, Object> formParams, String csrfToken) {
+    default Response performRequest(Map<String, Object> formParams, String csrfToken) {
         return RestAssured
                 .given()
                 .headers(getHeaders())
@@ -32,7 +32,7 @@ public interface RequestPerformer {
                 .post(getUriPath());
     }
 
-    default Response performRequestWithParamsCookies(Map<String, Object> formParams, Cookies cookies) {
+    default Response performRequest(Map<String, Object> formParams, Cookies cookies) {
         return RestAssured
                 .given()
                 .headers(getHeaders())
@@ -42,7 +42,7 @@ public interface RequestPerformer {
                 .post(getUriPath());
     }
 
-    default Response performRequestWithParamsTokenCookies(String csrfToken, Cookies cookies) {
+    default Response performRequest(String csrfToken, Cookies cookies) {
         return RestAssured
                 .given()
                 .headers(getHeaders())
@@ -52,7 +52,7 @@ public interface RequestPerformer {
                 .post(getUriPath());
     }
 
-    default Response performRequestWithParams(Map<String, Object> formParams) {
+    default Response performRequest(Map<String, Object> formParams) {
         System.out.println(formParams);
         return RestAssured
                 .given()
@@ -62,7 +62,7 @@ public interface RequestPerformer {
                 .post(getUriPath());
     }
 
-    default Response performRequestWithToken(String csrfToken) {
+    default Response performRequest(String csrfToken) {
         return RestAssured
                 .given()
                 .headers(getHeaders())
@@ -71,7 +71,7 @@ public interface RequestPerformer {
                 .post(getUriPath());
     }
 
-    default Response performRequestWithCookies(Cookies cookies) {
+    default Response performRequest(Cookies cookies) {
         return RestAssured
                 .given()
                 .headers(getHeaders())
