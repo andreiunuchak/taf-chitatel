@@ -79,4 +79,12 @@ public interface RequestPerformer {
                 .when()
                 .post(getUriPath());
     }
+
+    default Response performRequest() {
+        return RestAssured
+                .given()
+                .headers(getHeaders())
+                .when()
+                .post(getUriPath());
+    }
 }

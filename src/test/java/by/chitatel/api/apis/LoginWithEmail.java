@@ -16,9 +16,4 @@ public class LoginWithEmail extends Login implements RequestPerformer {
     public String getUriPath() {
         return URI_PATH;
     }
-
-    @Override
-    public Response performRequest() {
-        throw new UnsupportedOperationException("This method is not supported in Child class.");
-    }
 }
