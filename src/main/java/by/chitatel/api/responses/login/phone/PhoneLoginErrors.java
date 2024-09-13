@@ -1,15 +1,12 @@
 package by.chitatel.api.responses.login.phone;
 
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PhoneLoginErrors {
 
     private String tel;
     private List<String> password_phone;
     private String nouser;
-    private final Map<String, Object> additionalProperties = new LinkedHashMap<>();
 
     public String getPhoneError() {
         return tel;
@@ -33,13 +30,5 @@ public class PhoneLoginErrors {
 
     public void setNouserError(String nouser) {
         this.nouser = nouser;
-    }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 }
