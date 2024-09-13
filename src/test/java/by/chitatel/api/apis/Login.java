@@ -15,7 +15,7 @@ public class Login {
         );
     }
 
-    public Response performRequest() {
+    public Response performGetRequest() {
         RestAssured.baseURI = new Login().BASE_URL;
         return RestAssured
                 .given()
