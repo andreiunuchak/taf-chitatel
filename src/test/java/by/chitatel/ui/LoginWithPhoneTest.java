@@ -3,9 +3,9 @@ package by.chitatel.ui;
 import by.chitatel.ui.constants.ErrorMessages;
 import by.chitatel.ui.modals.ErrorModal;
 import by.chitatel.ui.pages.ChitatelPage;
-import by.chitatel.ui.utils.Passwords;
-import by.chitatel.ui.utils.Phones;
-import by.chitatel.ui.objects.Phone;
+import by.chitatel.generators.Passwords;
+import by.chitatel.generators.Phones;
+import by.chitatel.generators.objects.Phone;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package by.chitatel.ui.objects;
+package by.chitatel.generators.objects;
 
 import java.util.Objects;
 

@@ -20,8 +20,4 @@ public class Responses {
                 new Cookie.Builder("chitatel_session", response.getCookies().get("chitatel_session")).build()
         );
     }
-
-    public static int getStatusCodeFromResponse(Response response) {
-        return response.getStatusCode();
-    }
 }

@@ -1,6 +1,6 @@
-package by.chitatel.api.tests;
+package by.chitatel.api;
 
-import by.chitatel.api.apis.Login;
+import by.chitatel.api.endpoints.Login;
 import by.chitatel.api.utils.Responses;
 import io.restassured.http.Cookies;
 import io.restassured.response.Response;

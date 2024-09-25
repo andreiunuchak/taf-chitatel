@@ -1,4 +1,4 @@
-package by.chitatel.api.apis;
+package by.chitatel.api.endpoints;
 
 import io.restassured.RestAssured;
 import io.restassured.http.Header;

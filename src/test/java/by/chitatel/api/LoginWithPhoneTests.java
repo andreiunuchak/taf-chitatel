@@ -1,7 +1,6 @@
-package by.chitatel.api.tests;
+package by.chitatel.api;
 
-import by.chitatel.api.apis.LoginWithEmail;
-import by.chitatel.api.apis.LoginWithPhone;
+import by.chitatel.api.endpoints.LoginWithPhone;
 import by.chitatel.api.responses.login.phone.PhoneLoginErrors;
 import by.chitatel.api.utils.Errors;
 import by.chitatel.api.utils.FormParameters;
@@ -26,7 +25,7 @@ public class LoginWithPhoneTests extends BaseTest {
     public void testChitatelPhoneLogin() {
         Map<String, Object> formParams = new FormParameters().setPhone("+375(99)1111111").setPhonePassword("test").setPhoneRememberMe("1").build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);

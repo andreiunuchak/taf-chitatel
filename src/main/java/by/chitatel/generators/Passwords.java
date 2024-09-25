@@ -1,4 +1,4 @@
-package by.chitatel.ui.utils;
+package by.chitatel.generators;
 
 import java.util.Random;
 

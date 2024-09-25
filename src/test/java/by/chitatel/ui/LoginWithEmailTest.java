@@ -3,8 +3,8 @@ package by.chitatel.ui;
 import by.chitatel.ui.constants.ErrorMessages;
 import by.chitatel.ui.modals.ErrorModal;
 import by.chitatel.ui.pages.ChitatelPage;
-import by.chitatel.ui.utils.Emails;
-import by.chitatel.ui.utils.Passwords;
+import by.chitatel.generators.Emails;
+import by.chitatel.generators.Passwords;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

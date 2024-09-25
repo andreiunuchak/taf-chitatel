@@ -1,6 +1,6 @@
-package by.chitatel.api.tests;
+package by.chitatel.api;
 
-import by.chitatel.api.apis.LoginWithEmail;
+import by.chitatel.api.endpoints.LoginWithEmail;
 import by.chitatel.api.responses.login.email.EmailLoginErrors;
 import by.chitatel.api.utils.Errors;
 import by.chitatel.api.utils.FormParameters;
@@ -25,7 +25,7 @@ public class LoginWithEmailTests extends BaseTest {
     public void testLoginWithIncorrectEmailAndPassword() {
         Map<String, Object> formParams = new FormParameters().setEmail("user@email.com").setPassword("123456").setRememberMe("1").build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
@@ -38,7 +38,7 @@ public class LoginWithEmailTests extends BaseTest {
     public void testLoginWithEmptyParameters() {
         Map<String, Object> formParams = new FormParameters().setEmail("").setPassword("").setRememberMe("").build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
@@ -51,7 +51,7 @@ public class LoginWithEmailTests extends BaseTest {
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
         Map<String, Object> formParams = new FormParameters().setEmail("user@test.com").setPassword("").setRememberMe("0").build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
@@ -64,7 +64,7 @@ public class LoginWithEmailTests extends BaseTest {
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParameters().setEmail("").setPassword("123456").setRememberMe("").build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
@@ -77,7 +77,7 @@ public class LoginWithEmailTests extends BaseTest {
     public void testLoginWithNullParameters() {
         Map<String, Object> formParams = new FormParameters().setEmail(null).setPassword(null).setRememberMe(null).build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
@@ -90,7 +90,7 @@ public class LoginWithEmailTests extends BaseTest {
     public void testLoginWithIntegerParameters() {
         Map<String, Object> formParams = new FormParameters().setEmail(123456).setPassword(123456).setRememberMe(1).build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
@@ -103,7 +103,7 @@ public class LoginWithEmailTests extends BaseTest {
     public void testLoginWithBooleanParameters() {
         Map<String, Object> formParams = new FormParameters().setEmail(true).setPassword(false).setRememberMe(true).build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
@@ -115,7 +115,7 @@ public class LoginWithEmailTests extends BaseTest {
     @Test
     public void testLoginWithoutParameters() {
         Response response = new LoginWithEmail().performPostRequest(csrfToken, cookies);
-        int statusCode = Responses.getStatusCodeFromResponse(response);
+        int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
