@@ -1,4 +1,4 @@
-package by.chitatel.ui.enums;
+package by.chitatel.generators.enums;
 
 public enum OperatorCodes {
     VELCOM_OLD("29"), MTS("33"), VELCOM_NEW("44"), LIFE("25"), MOCKED("00");

@@ -1,11 +1,11 @@
-package by.chitatel.ui.enums;
+package by.chitatel.generators.enums;
 
-public enum PhoneNumbers {
-    MOCKED("0000000");
+public enum CountryCodes {
+    BELARUS("375");
 
     private final String code;
 
-    PhoneNumbers(String code) {
+    CountryCodes(String code) {
         this.code = code;
     }
 

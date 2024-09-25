@@ -1,8 +1,8 @@
 package by.chitatel.generators;
 
-import by.chitatel.ui.enums.CountryCodes;
-import by.chitatel.ui.enums.OperatorCodes;
-import by.chitatel.ui.enums.PhoneNumbers;
+import by.chitatel.generators.enums.CountryCodes;
+import by.chitatel.generators.enums.OperatorCodes;
+import by.chitatel.generators.enums.PhoneNumbers;
 import by.chitatel.generators.objects.Phone;
 
 import java.util.ArrayList;

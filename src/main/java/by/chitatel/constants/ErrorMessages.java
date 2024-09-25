@@ -1,4 +1,4 @@
-package by.chitatel.ui.constants;
+package by.chitatel.constants;
 
 public abstract class ErrorMessages {
     public static final String PHONE_NOT_FOUND = "Такой телефон не найден";

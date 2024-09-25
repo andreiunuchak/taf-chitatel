@@ -1,6 +1,6 @@
 package by.chitatel.ui;
 
-import by.chitatel.ui.constants.ErrorMessages;
+import by.chitatel.constants.ErrorMessages;
 import by.chitatel.ui.modals.ErrorModal;
 import by.chitatel.ui.pages.ChitatelPage;
 import by.chitatel.generators.Passwords;
