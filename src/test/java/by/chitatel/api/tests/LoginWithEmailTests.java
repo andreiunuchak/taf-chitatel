@@ -29,7 +29,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertEquals("Неправильный e-mail или пароль!", errors.getNouserError());
+        Assertions.assertEquals("Неправильный e-mail или пароль!", errors.getNoUserError());
         Assertions.assertNull(errors.getEmailError());
         Assertions.assertNull(errors.getPasswordError());
     }
@@ -42,7 +42,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertNull(errors.getNouserError());
+        Assertions.assertNull(errors.getNoUserError());
         Assertions.assertEquals("Вы не указали \"Email\"", errors.getEmailError().getFirst());
         Assertions.assertEquals("Вы не указали \"Пароль\"", errors.getPasswordError().getFirst());
     }
@@ -55,7 +55,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertNull(errors.getNouserError());
+        Assertions.assertNull(errors.getNoUserError());
         Assertions.assertNull(errors.getEmailError());
         Assertions.assertEquals("Вы не указали \"Пароль\"", errors.getPasswordError().getFirst());
     }
@@ -68,7 +68,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertNull(errors.getNouserError());
+        Assertions.assertNull(errors.getNoUserError());
         Assertions.assertEquals("Вы не указали \"Email\"", errors.getEmailError().getFirst());
         Assertions.assertNull(errors.getPasswordError());
     }
@@ -81,7 +81,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertNull(errors.getNouserError());
+        Assertions.assertNull(errors.getNoUserError());
         Assertions.assertEquals("Вы не указали \"Email\"", errors.getEmailError().getFirst());
         Assertions.assertEquals("Вы не указали \"Пароль\"", errors.getPasswordError().getFirst());
     }
@@ -94,7 +94,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertEquals("Неправильный e-mail или пароль!", errors.getNouserError());
+        Assertions.assertEquals("Неправильный e-mail или пароль!", errors.getNoUserError());
         Assertions.assertNull(errors.getEmailError());
         Assertions.assertNull(errors.getPasswordError());
     }
@@ -107,7 +107,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertEquals("Неправильный e-mail или пароль!", errors.getNouserError());
+        Assertions.assertEquals("Неправильный e-mail или пароль!", errors.getNoUserError());
         Assertions.assertNull(errors.getEmailError());
         Assertions.assertNull(errors.getPasswordError());
     }
@@ -119,7 +119,7 @@ public class LoginWithEmailTests extends BaseTest {
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
         Assertions.assertEquals(statusCode, 200);
-        Assertions.assertNull(errors.getNouserError());
+        Assertions.assertNull(errors.getNoUserError());
         Assertions.assertEquals("Вы не указали \"Email\"", errors.getEmailError().getFirst());
         Assertions.assertEquals("Вы не указали \"Пароль\"", errors.getPasswordError().getFirst());
     }

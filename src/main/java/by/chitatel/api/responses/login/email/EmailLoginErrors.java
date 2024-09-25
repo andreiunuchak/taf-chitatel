@@ -24,7 +24,7 @@ public class EmailLoginErrors {
         this.password = password;
     }
 
-    public String getNouserError() {
+    public String getNoUserError() {
         return nouser;
     }
 
