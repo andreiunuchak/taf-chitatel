@@ -18,18 +18,20 @@ public abstract class BasePage {
 
     public abstract BasePage openPage();
 
-    public SearchModal typeIntoSearchField(String text){
+    public SearchModal typeIntoSearchField(String text) {
         Waiters.waitForElementPresence(driver, searchFieldBy).sendKeys(text);
         return new SearchModal();
     }
 
-    public CartPage clickOnCartButton(){
+    public CartPage clickOnCartButton() {
         Waiters.waitForElementPresence(driver, cartButtonBy).click();
         return new CartPage();
     }
 
-    protected void waitForCartUpdate(String initialAmountOfItemsInCart){
-        while(getAmountOfItemsInCart().equals(initialAmountOfItemsInCart)){
+    protected void waitForCartUpdate(String initialAmountOfItemsInCart) {
+        int attempt = 0;
+        while (getAmountOfItemsInCart().equals(initialAmountOfItemsInCart) && attempt < 10) {
+            attempt++;
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -38,7 +40,7 @@ public abstract class BasePage {
         }
     }
 
-    protected String getAmountOfItemsInCart(){
+    protected String getAmountOfItemsInCart() {
         return Waiters.waitForElementPresence(driver, cartCountBy).getText();
     }
 }
