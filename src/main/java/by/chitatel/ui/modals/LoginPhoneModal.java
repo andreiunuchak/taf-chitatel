@@ -1,6 +1,6 @@
 package by.chitatel.ui.modals;
 
-import by.chitatel.ui.pages.ChitatelPage;
+import by.chitatel.ui.pages.HomePage;
 import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
 
@@ -44,9 +44,9 @@ public class LoginPhoneModal extends BaseModal {
         return this;
     }
 
-    public ChitatelPage clickCloseButton() {
+    public HomePage clickCloseButton() {
         Waiters.waitForElementBeingClickable(driver, buttonClose).click();
-        return new ChitatelPage();
+        return new HomePage();
     }
 
     public void clickLoginButton() {
