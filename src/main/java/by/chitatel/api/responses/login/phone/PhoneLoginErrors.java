@@ -4,15 +4,15 @@ import java.util.List;
 
 public class PhoneLoginErrors {
 
-    private String tel;
+    private List<String> tel;
     private List<String> password_phone;
     private String nouser;
 
-    public String getPhoneError() {
+    public List<String> getPhoneError() {
         return tel;
     }
 
-    public void setPhoneError(String tel) {
+    public void setPhoneError(List<String> tel) {
         this.tel = tel;
     }
 
