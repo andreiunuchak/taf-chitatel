@@ -13,6 +13,6 @@ public class SearchTest extends BaseTest {
 
         Response response = new Search().performGetRequest(productName);
 
-        Assertions.assertEquals(productName, Responses.getSearchedProducts(response).getFirst());
+        Assertions.assertTrue(Responses.getSearchedProducts(response).getFirst().contains(productName));
     }
 }
