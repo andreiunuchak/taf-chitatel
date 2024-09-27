@@ -4,7 +4,6 @@ import by.chitatel.api.endpoints.LoginWithEmail;
 import by.chitatel.api.responses.login.email.EmailLoginErrors;
 import by.chitatel.api.utils.Errors;
 import by.chitatel.api.utils.FormParameters;
-import by.chitatel.api.utils.Responses;
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.Emails;
 import by.chitatel.generators.Passwords;
