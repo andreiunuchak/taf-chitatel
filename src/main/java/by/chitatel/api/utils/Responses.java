@@ -6,12 +6,22 @@ import io.restassured.response.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Responses {
     public static String getCSRFToken(Response response) {
         Document doc = Jsoup.parse(response.asString());
         Element metaTag = doc.select("meta[name=csrf-token]").first();
         return metaTag != null ? metaTag.attr("content") : "";
+    }
+
+    public static List<String> getSearchedProducts(Response response) {
+        Document doc = Jsoup.parse(response.asString());
+        Elements metaTag = doc.select("div.products-list-ajax div.name");
+        return metaTag.stream().map(Element::text).collect(Collectors.toList());
     }
 
     public static Cookies getCookies(Response response) {
