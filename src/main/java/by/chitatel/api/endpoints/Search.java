@@ -5,7 +5,7 @@ import io.restassured.http.Header;
 import io.restassured.http.Headers;
 
 public class Search implements GetRequestPerformer {
-    private final String URI_PATH = "/searchnew";
+    private final String SEARCH_URI_PATH = "/searchnew";
 
     @Override
     public Headers getHeaders() {
@@ -16,6 +16,6 @@ public class Search implements GetRequestPerformer {
 
     @Override
     public String getUriPath() {
-        return URI_PATH;
+        return SEARCH_URI_PATH;
     }
 }
