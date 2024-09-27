@@ -7,10 +7,11 @@ import io.restassured.response.Response;
 
 import java.util.Map;
 
-public interface RequestPerformer {
+public interface PostRequestPerformer {
     Headers getHeaders();
 
     String getUriPath();
+
     default Response performPostRequest(Map<String, Object> formParams, String csrfToken, Cookies cookies) {
         return RestAssured
                 .given()
