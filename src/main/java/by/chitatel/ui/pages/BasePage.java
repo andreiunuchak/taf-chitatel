@@ -8,6 +8,9 @@ import org.openqa.selenium.WebDriver;
 
 public abstract class BasePage {
     protected WebDriver driver;
+    private final int DEFAULT_WAIT_TIME_MILLISECONDS = 1000;
+    private final int MAX_CART_UPDATE_ATTEMPTS = 10;
+    protected final String BASE_URL = "https://chitatel.by";
     private final By searchFieldBy = By.xpath("//input[@id='input-search']");
     private final By cartButtonBy = By.xpath("//div[@class='h-cart']");
     private final By cartCountBy = By.xpath("//div[@class='h-cart']//div[@class='count']");
@@ -30,10 +33,10 @@ public abstract class BasePage {
 
     protected void waitForCartUpdate(String initialAmountOfItemsInCart) {
         int attempt = 0;
-        while (getAmountOfItemsInCart().equals(initialAmountOfItemsInCart) && attempt < 10) {
+        while (getAmountOfItemsInCart().equals(initialAmountOfItemsInCart) && attempt < MAX_CART_UPDATE_ATTEMPTS) {
             attempt++;
             try {
-                Thread.sleep(1000);
+                Thread.sleep(DEFAULT_WAIT_TIME_MILLISECONDS);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

@@ -5,7 +5,6 @@ import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
 
 public class HomePage extends BasePage {
-    private final String BASE_URL = "https://chitatel.by/";
     private final By loginButton = By.xpath("//a[@class='block__link login__link login_popup']/div[2]");
 
     public LoginPhoneModal clickLoginButton() {

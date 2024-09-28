@@ -14,9 +14,9 @@ public class CartTest extends BaseTest {
                 .typeIntoSearchField(productName)
                 .clickOnSearchResultItem(0)
                 .clickOnAddToCartButton();
-        String actualTitle = new HomePage()
+        String productNameInCart = new HomePage()
                 .clickOnCartButton()
                 .getProductTitleInCart(0);
-        Assertions.assertEquals(productName, actualTitle);
+        Assertions.assertEquals(productName, productNameInCart);
     }
 }
