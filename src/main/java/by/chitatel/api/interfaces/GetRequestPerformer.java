@@ -31,4 +31,12 @@ public interface GetRequestPerformer {
                 .when()
                 .get(getUriPath());
     }
+
+    default Response performGetRequest() {
+        return RestAssured
+                .given()
+                .headers(getHeaders())
+                .when()
+                .get(getUriPath());
+    }
 }
