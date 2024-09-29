@@ -7,6 +7,7 @@ import by.chitatel.api.utils.FormParameters;
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.Emails;
 import by.chitatel.generators.Passwords;
+import by.chitatel.generators.enums.RememberMeCodes;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ public class LoginWithEmailTest extends BaseTest {
     public void testGetRequest() {
         String email = Emails.generateValidEmail();
         String password = Passwords.generatePassword();
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setEmail(email).setPassword(password).setRememberMe(rememberMe).build();
         Response response = new LoginWithEmail().performGetRequest(formParams, csrfToken, cookies);
@@ -41,7 +42,7 @@ public class LoginWithEmailTest extends BaseTest {
     public void testHeadRequest() {
         String email = Emails.generateValidEmail();
         String password = Passwords.generatePassword();
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setEmail(email).setPassword(password).setRememberMe(rememberMe).build();
         Response response = new LoginWithEmail().performHeadRequest(formParams, csrfToken, cookies);
@@ -54,7 +55,7 @@ public class LoginWithEmailTest extends BaseTest {
     public void testLoginWithIncorrectEmailAndPassword() {
         String email = Emails.generateValidEmail();
         String password = Passwords.generatePassword();
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setEmail(email).setPassword(password).setRememberMe(rememberMe).build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
@@ -88,7 +89,7 @@ public class LoginWithEmailTest extends BaseTest {
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
         String email = Emails.generateValidEmail();
         String password = "";
-        String rememberMe = "0";
+        String rememberMe = RememberMeCodes.NOT_SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setEmail(email).setPassword(password).setRememberMe(rememberMe).build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
@@ -105,7 +106,7 @@ public class LoginWithEmailTest extends BaseTest {
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
         String email = "";
         String password = Passwords.generatePassword();
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setEmail(email).setPassword(password).setRememberMe(rememberMe).build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
