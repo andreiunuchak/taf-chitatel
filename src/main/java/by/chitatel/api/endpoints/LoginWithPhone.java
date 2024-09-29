@@ -1,10 +1,10 @@
 package by.chitatel.api.endpoints;
 
-import by.chitatel.api.interfaces.RequestPerformer;
+import by.chitatel.api.interfaces.PostRequestPerformer;
 import io.restassured.http.Headers;
 
-public class LoginWithPhone extends Login implements RequestPerformer {
-    private final String PHONE_LOGIN_URI_PATH = "/login-phone";
+public class LoginWithPhone extends Login implements PostRequestPerformer {
+    private final String LOGIN_PHONE_URI_PATH = "/login-phone";
 
     @Override
     public Headers getHeaders() {
@@ -13,6 +13,6 @@ public class LoginWithPhone extends Login implements RequestPerformer {
 
     @Override
     public String getUriPath() {
-        return PHONE_LOGIN_URI_PATH;
+        return LOGIN_PHONE_URI_PATH;
     }
 }

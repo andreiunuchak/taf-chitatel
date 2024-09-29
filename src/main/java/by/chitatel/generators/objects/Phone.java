@@ -29,11 +29,11 @@ public class Phone {
         return String.format("%s%s", operatorCode, phoneNumber);
     }
 
-    public String getFullPhoneNumber() {
+    public String getPhoneNumberFull() {
         return String.format("%s%s%s", countryCode, operatorCode, phoneNumber);
     }
 
-    public String getFullPhoneNumberFormatted() {
+    public String getPhoneNumberFullFormatted() {
         return String.format("+%s(%s)%s", countryCode, operatorCode, phoneNumber);
     }
 
