@@ -2,7 +2,7 @@ package by.chitatel.ui;
 
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.ui.modals.ErrorModal;
-import by.chitatel.ui.pages.ChitatelPage;
+import by.chitatel.ui.pages.HomePage;
 import by.chitatel.generators.Passwords;
 import by.chitatel.generators.Phones;
 import by.chitatel.generators.objects.Phone;
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class LoginWithPhoneTest extends BaseTest {
     @Test
     public void testSendPasswordWithIncorrectPhone() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(Phones.generateIncorrectPhoneNumber().getPhoneNumberWithOperatorCode())
@@ -24,8 +24,8 @@ public class LoginWithPhoneTest extends BaseTest {
     public void testSendPasswordWithMockPhone() {
         Phone phone = Phones.generateMockPhoneNumber();
         String inputPhoneNumber = phone.getPhoneNumberWithOperatorCode();
-        String fullPhoneNumber = phone.getPhoneNumberFull();
-        new ChitatelPage()
+        String fullPhoneNumber = phone.getFullPhoneNumber();
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(inputPhoneNumber)
@@ -35,7 +35,7 @@ public class LoginWithPhoneTest extends BaseTest {
 
     @Test
     public void testLoginWithMockPhoneAndIncorrectPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
@@ -46,7 +46,7 @@ public class LoginWithPhoneTest extends BaseTest {
 
     @Test
     public void testLoginWithMockPhoneAndEmptyPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
@@ -56,7 +56,7 @@ public class LoginWithPhoneTest extends BaseTest {
 
     @Test
     public void testLoginWithMockPhoneAndLongPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
@@ -67,7 +67,7 @@ public class LoginWithPhoneTest extends BaseTest {
 
     @Test
     public void testLoginWithEmptyPhoneAndIncorrectPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .inputPassword(Passwords.generatePassword(10))
@@ -77,7 +77,7 @@ public class LoginWithPhoneTest extends BaseTest {
 
     @Test
     public void testLoginWithInvalidPhoneAndIncorrectPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .performLogin(Phones.generateInvalidPhoneNumber(1, 6).getPhoneNumberWithOperatorCode(), Passwords.generatePassword(10), true);

@@ -2,7 +2,7 @@ package by.chitatel.ui;
 
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.ui.modals.ErrorModal;
-import by.chitatel.ui.pages.ChitatelPage;
+import by.chitatel.ui.pages.HomePage;
 import by.chitatel.generators.Emails;
 import by.chitatel.generators.Passwords;
 import org.junit.jupiter.api.Assertions;
@@ -12,7 +12,7 @@ public class LoginWithEmailTest extends BaseTest {
 
     @Test
     public void testLoginWithIncorrectEmailAndPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
@@ -24,7 +24,7 @@ public class LoginWithEmailTest extends BaseTest {
 
     @Test
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
@@ -35,7 +35,7 @@ public class LoginWithEmailTest extends BaseTest {
 
     @Test
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
@@ -46,7 +46,7 @@ public class LoginWithEmailTest extends BaseTest {
 
     @Test
     public void testLoginWithEmptyEmailAndEmptyPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
@@ -56,7 +56,7 @@ public class LoginWithEmailTest extends BaseTest {
 
     @Test
     public void testLoginWithInvalidEmailAndIncorrectPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
@@ -68,7 +68,7 @@ public class LoginWithEmailTest extends BaseTest {
 
     @Test
     public void testLoginWithLongEmailAndLongPassword() {
-        new ChitatelPage()
+        new HomePage()
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
