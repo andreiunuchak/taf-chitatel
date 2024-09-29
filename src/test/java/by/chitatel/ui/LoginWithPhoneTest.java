@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class LoginWithPhoneTest extends BaseTest {
+
     @Test
     public void testSendPasswordWithIncorrectPhone() {
         new HomePage()

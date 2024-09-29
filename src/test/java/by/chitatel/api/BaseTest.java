@@ -1,6 +1,6 @@
 package by.chitatel.api;
 
-import by.chitatel.api.endpoints.Login;
+import by.chitatel.api.endpoints.BaseEndpoint;
 import by.chitatel.api.utils.Responses;
 import io.restassured.RestAssured;
 import io.restassured.http.Cookies;
@@ -13,8 +13,8 @@ public class BaseTest {
 
     @BeforeEach
     public void getCSRFData() {
-        RestAssured.baseURI = new Login().BASE_URL;
-        Response response = new Login().performGetRequest();
+        RestAssured.baseURI = new BaseEndpoint().BASE_URL;
+        Response response = new BaseEndpoint().performGetRequest();
         csrfToken = Responses.getCSRFToken(response);
         cookies = Responses.getCookies(response);
     }
