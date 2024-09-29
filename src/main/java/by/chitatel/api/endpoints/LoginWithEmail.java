@@ -6,7 +6,7 @@ import by.chitatel.api.interfaces.PostRequestPerformer;
 import io.restassured.http.Headers;
 
 public class LoginWithEmail extends Login implements PostRequestPerformer, HeadRequestPerformer, GetRequestPerformer {
-    private final String LOGIN_URI_PATH = "/login";
+    private final String LOGIN_EMAIL_URI_PATH = "/login";
 
     @Override
     public Headers getHeaders() {
@@ -15,6 +15,6 @@ public class LoginWithEmail extends Login implements PostRequestPerformer, HeadR
 
     @Override
     public String getUriPath() {
-        return LOGIN_URI_PATH;
+        return LOGIN_EMAIL_URI_PATH;
     }
 }

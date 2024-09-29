@@ -7,6 +7,7 @@ import by.chitatel.api.utils.FormParameters;
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.Passwords;
 import by.chitatel.generators.Phones;
+import by.chitatel.generators.enums.RememberMeCodes;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 import java.util.Random;
 
-public class LoginWithPhoneTests extends BaseTest {
+public class LoginWithPhoneTest extends BaseTest {
 
     @Test
     public void testLoginPhoneOptions() {
@@ -26,9 +27,9 @@ public class LoginWithPhoneTests extends BaseTest {
 
     @Test
     public void testPhoneLoginWithValidNotFormattedPhone() {
-        String phoneNumber = Phones.generateIncorrectPhoneNumber().getFullPhoneNumber();
+        String phoneNumber = Phones.generateIncorrectPhoneNumber().getPhoneNumberFull();
         String phonePassword = Passwords.generatePassword();
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -45,7 +46,7 @@ public class LoginWithPhoneTests extends BaseTest {
     public void testPhoneLoginWithPhoneThatDoesNotHaveCodes() {
         String phoneNumber = Phones.generateIncorrectPhoneNumber().getPhoneNumber();
         String phonePassword = Passwords.generatePassword();
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -60,9 +61,9 @@ public class LoginWithPhoneTests extends BaseTest {
 
     @Test
     public void testPhoneLoginWithValidPhoneAndShortPassword() {
-        String phoneNumber = Phones.generateIncorrectPhoneNumber().getFullPhoneNumberFormatted();
+        String phoneNumber = Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted();
         String phonePassword = Passwords.generatePassword(5);
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -77,9 +78,9 @@ public class LoginWithPhoneTests extends BaseTest {
 
     @Test
     public void testPhoneLoginWithValidPhoneAndLongPassword() {
-        String phoneNumber = Phones.generateIncorrectPhoneNumber().getFullPhoneNumberFormatted();
+        String phoneNumber = Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted();
         String phonePassword = Passwords.generatePassword(500);
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -94,9 +95,9 @@ public class LoginWithPhoneTests extends BaseTest {
 
     @Test
     public void testPhoneLoginWithMockPhoneAndIncorrectPassword() {
-        String phoneNumber = Phones.generateMockPhoneNumber().getFullPhoneNumberFormatted();
+        String phoneNumber = Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted();
         String phonePassword = Passwords.generatePassword();
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.NOT_SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -111,9 +112,9 @@ public class LoginWithPhoneTests extends BaseTest {
 
     @Test
     public void testPhoneLoginWithMockPhoneAndEmptyPassword() {
-        String phoneNumber = Phones.generateMockPhoneNumber().getFullPhoneNumberFormatted();
+        String phoneNumber = Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted();
         String phonePassword = "";
-        String rememberMe = "1";
+        String rememberMe = RememberMeCodes.NOT_SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -208,9 +209,9 @@ public class LoginWithPhoneTests extends BaseTest {
 
     @Test
     public void testPhoneLoginWithoutToken() {
-        String phoneNumber = Phones.generateMockPhoneNumber().getFullPhoneNumberFormatted();
+        String phoneNumber = Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted();
         String phonePassword = Passwords.generatePassword();
-        String rememberMe = "0";
+        String rememberMe = RememberMeCodes.NOT_SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, cookies);
@@ -221,9 +222,9 @@ public class LoginWithPhoneTests extends BaseTest {
 
     @Test
     public void testPhoneLoginWithoutCookies() {
-        String phoneNumber = Phones.generateMockPhoneNumber().getFullPhoneNumberFormatted();
+        String phoneNumber = Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted();
         String phonePassword = Passwords.generatePassword();
-        String rememberMe = "0";
+        String rememberMe = RememberMeCodes.NOT_SELECTED.getCode();
 
         Map<String, Object> formParams = new FormParameters().setPhone(phoneNumber).setPhonePassword(phonePassword).setPhoneRememberMe(rememberMe).build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken);

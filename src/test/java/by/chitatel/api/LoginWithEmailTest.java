@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 import java.util.Random;
 
-public class LoginWithEmailTests extends BaseTest {
+public class LoginWithEmailTest extends BaseTest {
 
     @Test
     public void testLoginEmailOptions() {

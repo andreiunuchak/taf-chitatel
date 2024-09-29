@@ -5,17 +5,18 @@ import io.restassured.http.Header;
 import io.restassured.http.Headers;
 
 public class Search implements GetRequestPerformer {
-    private final String SEARCH_URI_PATH = "/searchnew";
+    private final String SEARCHNEW_URI_PATH = "/searchnew";
+    private final String DEFAULT_USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
 
     @Override
     public Headers getHeaders() {
         return new Headers(
-                new Header("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+                new Header("user-agent", DEFAULT_USER_AGENT)
         );
     }
 
     @Override
     public String getUriPath() {
-        return SEARCH_URI_PATH;
+        return SEARCHNEW_URI_PATH;
     }
 }

@@ -24,7 +24,7 @@ public class LoginWithPhoneTest extends BaseTest {
     public void testSendPasswordWithMockPhone() {
         Phone phone = Phones.generateMockPhoneNumber();
         String inputPhoneNumber = phone.getPhoneNumberWithOperatorCode();
-        String fullPhoneNumber = phone.getFullPhoneNumber();
+        String fullPhoneNumber = phone.getPhoneNumberFull();
         new ChitatelPage()
                 .openPage()
                 .clickLoginButton()
