@@ -9,6 +9,7 @@ import by.chitatel.generators.Emails;
 import by.chitatel.generators.Passwords;
 import by.chitatel.generators.enums.RememberMeCodes;
 import io.restassured.response.Response;
+import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     public void testLoginEmailOptions() {
         Response response = new LoginWithEmail().performOptionsRequest(csrfToken, cookies);
-        String allowedMethods = response.getHeader("Allow");
+        String allowedMethods = response.getHeader(HttpHeaders.ALLOW);
 
         Assertions.assertEquals("GET,HEAD,POST", allowedMethods);
     }

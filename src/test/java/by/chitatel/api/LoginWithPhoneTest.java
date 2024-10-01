@@ -9,6 +9,7 @@ import by.chitatel.generators.Passwords;
 import by.chitatel.generators.Phones;
 import by.chitatel.generators.enums.RememberMeCodes;
 import io.restassured.response.Response;
+import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class LoginWithPhoneTest extends BaseTest {
     @Test
     public void testLoginPhoneOptions() {
         Response response = new LoginWithPhone().performOptionsRequest(csrfToken, cookies);
-        String allowedMethods = response.getHeader("Allow");
+        String allowedMethods = response.getHeader(HttpHeaders.ALLOW);
 
         Assertions.assertEquals("POST", allowedMethods);
     }
@@ -63,7 +64,7 @@ public class LoginWithPhoneTest extends BaseTest {
     public void testPhoneLoginWithValidPhoneAndShortPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
-                .setPhonePassword(Passwords.generatePassword(5))
+                .setPhonePassword(Passwords.generatePassword(Passwords.MIN_ALLOWED_LENGTH - 1))
                 .setPhoneRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -80,7 +81,7 @@ public class LoginWithPhoneTest extends BaseTest {
     public void testPhoneLoginWithValidPhoneAndLongPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
-                .setPhonePassword(Passwords.generatePassword(500))
+                .setPhonePassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + 1))
                 .setPhoneRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);

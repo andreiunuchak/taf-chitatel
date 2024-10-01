@@ -3,6 +3,9 @@ package by.chitatel.generators;
 import java.util.Random;
 
 public class Passwords {
+    public final static int MIN_ALLOWED_LENGTH = 6;
+    public final static int MAX_ALLOWED_LENGTH = 255;
+
     private static final char[] ALL_CHARS = {
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -15,7 +18,7 @@ public class Passwords {
     };
 
     public static String generatePassword() {
-        return generatePassword(new Random().nextInt(12) + 8);
+        return generatePassword(new Random().nextInt(MAX_ALLOWED_LENGTH - MIN_ALLOWED_LENGTH) + MIN_ALLOWED_LENGTH);
     }
 
     public static String generatePassword(int length) {

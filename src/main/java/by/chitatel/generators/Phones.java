@@ -26,13 +26,9 @@ public class Phones {
         return new Phone(getCorrectCountryCode(), generateIncorrectOperatorCode(), generatePhoneNumber(7));
     }
 
-    public static Phone generateInvalidPhoneNumber(int minLength, int maxLength) {
-        if (minLength < 0) {
-            minLength = 0;
-        }
-        if (maxLength < minLength) {
-            maxLength = minLength;
-        }
+    public static Phone generateInvalidPhoneNumber() {
+        int minLength = 1;
+        int maxLength = 6;
         int length = RANDOM.nextInt(maxLength - minLength) + minLength;
         return new Phone(getCorrectCountryCode(), generateIncorrectOperatorCode(), generatePhoneNumber(length));
     }

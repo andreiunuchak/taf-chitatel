@@ -40,7 +40,7 @@ public class LoginWithPhoneTest extends BaseTest {
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
-                .inputPassword(Passwords.generatePassword(10))
+                .inputPassword(Passwords.generatePassword())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PASSWORD_DOES_NOT_MATCH, new ErrorModal().getErrorMessage());
     }
@@ -61,7 +61,7 @@ public class LoginWithPhoneTest extends BaseTest {
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
-                .inputPassword(Passwords.generatePassword(500))
+                .inputPassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + 1))
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PASSWORD_IS_TOO_LONG, new ErrorModal().getErrorMessage());
     }
@@ -71,7 +71,7 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .inputPassword(Passwords.generatePassword(10))
+                .inputPassword(Passwords.generatePassword())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PHONE_NUMBER_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
     }
@@ -81,7 +81,7 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .performLogin(Phones.generateInvalidPhoneNumber(1, 6).getPhoneNumberWithOperatorCode(), Passwords.generatePassword(10), true);
+                .performLogin(Phones.generateInvalidPhoneNumber().getPhoneNumberWithOperatorCode(), Passwords.generatePassword(), true);
         Assertions.assertEquals(ErrorMessages.PHONE_NUMBER_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
     }
 }

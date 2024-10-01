@@ -17,7 +17,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .clickLoginButton()
                 .clickTabEmail()
                 .inputEmail(Emails.generateValidEmail())
-                .inputPassword(Passwords.generatePassword(10))
+                .inputPassword(Passwords.generatePassword())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorModal().getErrorMessage());
     }
@@ -39,7 +39,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
-                .inputPassword(Passwords.generatePassword(10))
+                .inputPassword(Passwords.generatePassword())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
     }
@@ -61,7 +61,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .clickLoginButton()
                 .clickTabEmail()
                 .inputEmail(Emails.generateInvalidEmail())
-                .inputPassword(Passwords.generatePassword(10))
+                .inputPassword(Passwords.generatePassword())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorModal().getErrorMessage());
     }
@@ -72,7 +72,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
-                .performLogin(Emails.generateValidEmail(500), Passwords.generatePassword(500), false);
+                .performLogin(Emails.generateValidEmail(Emails.MAX_ALLOWED_LENGTH + 1), Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + 1), false);
         Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorModal().getErrorMessage());
     }
 }
