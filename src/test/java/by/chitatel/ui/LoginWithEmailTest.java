@@ -5,12 +5,18 @@ import by.chitatel.ui.modals.ErrorModal;
 import by.chitatel.ui.pages.HomePage;
 import by.chitatel.generators.Emails;
 import by.chitatel.generators.Passwords;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@Epic("UI Tests")
+@Feature("UI Tests of email login")
 public class LoginWithEmailTest extends BaseTest {
 
     @Test
+    @DisplayName("UI Test of email login with incorrect email and password")
     public void testLoginWithIncorrectEmailAndPassword() {
         new HomePage()
                 .openPage()
@@ -23,6 +29,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of email login with empty password")
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
         new HomePage()
                 .openPage()
@@ -34,6 +41,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of email login with empty email")
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
         new HomePage()
                 .openPage()
@@ -45,6 +53,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of email login with empty email and password")
     public void testLoginWithEmptyEmailAndEmptyPassword() {
         new HomePage()
                 .openPage()
@@ -55,6 +64,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of email login with invalid email")
     public void testLoginWithInvalidEmailAndIncorrectPassword() {
         new HomePage()
                 .openPage()
@@ -67,6 +77,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of email login with long email and password")
     public void testLoginWithLongEmailAndLongPassword() {
         new HomePage()
                 .openPage()

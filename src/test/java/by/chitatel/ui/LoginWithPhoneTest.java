@@ -6,12 +6,18 @@ import by.chitatel.ui.pages.HomePage;
 import by.chitatel.generators.Passwords;
 import by.chitatel.generators.Phones;
 import by.chitatel.generators.objects.Phone;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@Epic("UI Tests")
+@Feature("UI Tests of phone login")
 public class LoginWithPhoneTest extends BaseTest {
 
     @Test
+    @DisplayName("UI Test of sending password to incorrect phone number")
     public void testSendPasswordWithIncorrectPhone() {
         new HomePage()
                 .openPage()
@@ -22,6 +28,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of sending password to mock phone number")
     public void testSendPasswordWithMockPhone() {
         Phone phone = Phones.generateMockPhoneNumber();
         String inputPhoneNumber = phone.getPhoneNumberWithOperatorCode();
@@ -35,6 +42,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of phone login with mock phone number and incorrect password")
     public void testLoginWithMockPhoneAndIncorrectPassword() {
         new HomePage()
                 .openPage()
@@ -46,6 +54,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of phone login with mock phone number and empty password")
     public void testLoginWithMockPhoneAndEmptyPassword() {
         new HomePage()
                 .openPage()
@@ -56,6 +65,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of phone login with mock phone number and long password")
     public void testLoginWithMockPhoneAndLongPassword() {
         new HomePage()
                 .openPage()
@@ -67,6 +77,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of phone login with empty phone number")
     public void testLoginWithEmptyPhoneAndIncorrectPassword() {
         new HomePage()
                 .openPage()
@@ -77,6 +88,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of phone login with invalid phone number")
     public void testLoginWithInvalidPhoneAndIncorrectPassword() {
         new HomePage()
                 .openPage()

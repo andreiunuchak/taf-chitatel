@@ -8,17 +8,23 @@ import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.Passwords;
 import by.chitatel.generators.Phones;
 import by.chitatel.generators.enums.RememberMeCodes;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import java.util.Random;
 
+@Epic("API Tests")
+@Feature("API Tests of phone login")
 public class LoginWithPhoneTest extends BaseTest {
 
     @Test
+    @DisplayName("API OPTIONS Test of allowed methods")
     public void testLoginPhoneOptions() {
         Response response = new LoginWithPhone().performOptionsRequest(csrfToken, cookies);
         String allowedMethods = response.getHeader(HttpHeaders.ALLOW);
@@ -27,6 +33,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with not formatted phone number")
     public void testPhoneLoginWithValidNotFormattedPhone() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFull())
@@ -44,6 +51,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login without country and operator codes")
     public void testPhoneLoginWithPhoneThatDoesNotHaveCodes() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumber())
@@ -61,6 +69,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with short password")
     public void testPhoneLoginWithValidPhoneAndShortPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
@@ -78,6 +87,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with long password")
     public void testPhoneLoginWithValidPhoneAndLongPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
@@ -95,6 +105,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with mock phone number and incorrect password")
     public void testPhoneLoginWithMockPhoneAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())
@@ -112,6 +123,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with mock phone number and empty password")
     public void testPhoneLoginWithMockPhoneAndEmptyPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())
@@ -129,6 +141,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with empty parameters")
     public void testPhoneLoginWithEmptyParams() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone("")
@@ -146,6 +159,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with boolean parameters")
     public void testPhoneLoginWithBooleanParams() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(true)
@@ -163,6 +177,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with integer parameters")
     public void testPhoneLoginWithIntegerParams() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(new Random().nextInt(1000000))
@@ -180,6 +195,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login with 'null' parameters")
     public void testPhoneLoginWithNullParams() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(null)
@@ -197,6 +213,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login without parameters")
     public void testPhoneLoginWithoutParams() {
         Response response = new LoginWithPhone().performPostRequest(csrfToken, cookies);
         int statusCode = response.statusCode();
@@ -209,6 +226,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login without scrf-token")
     public void testPhoneLoginWithoutToken() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())
@@ -222,6 +240,7 @@ public class LoginWithPhoneTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of phone login without cookies")
     public void testPhoneLoginWithoutCookies() {
         Map<String, Object> formParams = new FormParameters()
                 .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())

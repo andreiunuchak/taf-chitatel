@@ -8,17 +8,23 @@ import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.Emails;
 import by.chitatel.generators.Passwords;
 import by.chitatel.generators.enums.RememberMeCodes;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.apache.http.HttpHeaders;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 import java.util.Random;
 
+@Epic("API Tests")
+@Feature("API Tests of email login")
 public class LoginWithEmailTest extends BaseTest {
 
     @Test
+    @DisplayName("API OPTIONS Test of allowed methods")
     public void testLoginEmailOptions() {
         Response response = new LoginWithEmail().performOptionsRequest(csrfToken, cookies);
         String allowedMethods = response.getHeader(HttpHeaders.ALLOW);
@@ -27,6 +33,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API GET Test of email login")
     public void testGetRequest() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(Emails.generateValidEmail())
@@ -40,6 +47,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API HEAD Test of email login")
     public void testHeadRequest() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(Emails.generateValidEmail())
@@ -53,6 +61,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login with incorrect email")
     public void testLoginWithIncorrectEmailAndPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(Emails.generateValidEmail())
@@ -70,6 +79,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login with empty strings")
     public void testLoginWithEmptyParameters() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail("")
@@ -87,6 +97,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login with incorrect email and empty password")
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(Emails.generateValidEmail())
@@ -104,6 +115,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login with empty email")
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail("")
@@ -121,6 +133,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login with 'null' parameters")
     public void testLoginWithNullParameters() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(null)
@@ -138,6 +151,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login with integer parameters")
     public void testLoginWithIntegerParameters() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(new Random().nextInt(1000000))
@@ -155,6 +169,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login with boolean parameters")
     public void testLoginWithBooleanParameters() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(true)
@@ -172,6 +187,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login without email parameter")
     public void testLoginWithoutEmailParameter() {
         Map<String, Object> formParams = new FormParameters()
                 .setPassword(Passwords.generatePassword())
@@ -188,6 +204,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login without password parameter")
     public void testLoginWithoutPasswordParameter() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail(Emails.generateValidEmail())
@@ -204,6 +221,7 @@ public class LoginWithEmailTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of email login without parameters")
     public void testLoginWithoutParameters() {
         Response response = new LoginWithEmail().performPostRequest(csrfToken, cookies);
         int statusCode = response.statusCode();
