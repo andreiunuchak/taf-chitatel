@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 @Epic("UI Tests")
 @Feature("UI Tests of phone login")
 public class LoginWithPhoneTest extends BaseTest {
@@ -71,7 +73,7 @@ public class LoginWithPhoneTest extends BaseTest {
                 .openPage()
                 .clickLoginButton()
                 .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
-                .inputPassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + 1))
+                .inputPassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + new Random().nextInt(Passwords.MAX_ALLOWED_LENGTH)))
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PASSWORD_IS_TOO_LONG, new ErrorModal().getErrorMessage());
     }

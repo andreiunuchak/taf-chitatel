@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 @Epic("UI Tests")
 @Feature("UI Tests of email login")
 public class LoginWithEmailTest extends BaseTest {
@@ -83,7 +85,10 @@ public class LoginWithEmailTest extends BaseTest {
                 .openPage()
                 .clickLoginButton()
                 .clickTabEmail()
-                .performLogin(Emails.generateValidEmail(Emails.MAX_ALLOWED_LENGTH + 1), Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + 1), false);
+                .performLogin(
+                        Emails.generateValidEmail(Emails.MAX_ALLOWED_LENGTH + new Random().nextInt(Emails.MAX_ALLOWED_LENGTH)),
+                        Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + new Random().nextInt(Passwords.MAX_ALLOWED_LENGTH)),
+                        false);
         Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorModal().getErrorMessage());
     }
 }

@@ -232,4 +232,40 @@ public class LoginWithEmailTest extends BaseTest {
         Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst());
         Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
     }
+
+    @Test
+    @DisplayName("API POST Test of email login with long email and password")
+    public void testLoginWithLongEmailAndLongPassword() {
+        Map<String, Object> formParams = new FormParameters()
+                .setEmail(Emails.generateValidEmail(Emails.MAX_ALLOWED_LENGTH + new Random().nextInt(Emails.MAX_ALLOWED_LENGTH)))
+                .setPassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + new Random().nextInt(Passwords.MAX_ALLOWED_LENGTH)))
+                .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
+                .build();
+        Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
+        int statusCode = response.statusCode();
+        EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
+
+        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError());
+        Assertions.assertNull(errors.getEmailError());
+        Assertions.assertNull(errors.getPasswordError());
+    }
+
+    @Test
+    @DisplayName("API POST Test of email login with invalid email")
+    public void testLoginWithInvalidEmailAndIncorrectPassword() {
+        Map<String, Object> formParams = new FormParameters()
+                .setEmail(Emails.generateInvalidEmail())
+                .setPassword(Passwords.generatePassword())
+                .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
+                .build();
+        Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
+        int statusCode = response.statusCode();
+        EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
+
+        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError());
+        Assertions.assertNull(errors.getEmailError());
+        Assertions.assertNull(errors.getPasswordError());
+    }
 }
