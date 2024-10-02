@@ -1,4 +1,4 @@
-# Test Automation Project for "chitatel.by"
+# Test Automation Framework for "chitatel.by"
 This project is a comprehensive test automation suite designed to test both the UI and API of the website [chitatel.by](chitatel.by). The project is implemented using Java, leveraging Selenium for UI automation, RestAssured for API testing, and JUnit as the test framework. Allure Report is used for generating detailed test reports, and Jenkins is integrated for continuous integration and test execution.
 
 ## Key Features
