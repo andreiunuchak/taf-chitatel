@@ -44,7 +44,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertEquals(ErrorMessages.PHONE_AND_PASSWORD_ARE_WRONG, errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertNull(errors.getPasswordError());
@@ -62,7 +62,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertEquals(ErrorMessages.PHONE_AND_PASSWORD_ARE_WRONG, errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertNull(errors.getPasswordError());
@@ -80,7 +80,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertNull(errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertEquals(ErrorMessages.PASSWORD_IS_TOO_SHORT, errors.getPasswordError().getFirst());
@@ -98,7 +98,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertNull(errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertEquals(ErrorMessages.PASSWORD_IS_TOO_LONG, errors.getPasswordError().getFirst());
@@ -116,7 +116,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertEquals(ErrorMessages.PASSWORD_DOES_NOT_MATCH, errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertNull(errors.getPasswordError());
@@ -134,7 +134,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertNull(errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
@@ -152,7 +152,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertNull(errors.getNouserError());
         Assertions.assertEquals(ErrorMessages.PHONE_NUMBER_WAS_NOT_INPUT, errors.getPhoneError().getFirst());
         Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
@@ -170,7 +170,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertNull(errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertEquals(ErrorMessages.PASSWORD_IS_TOO_SHORT, errors.getPasswordError().getFirst());
@@ -188,7 +188,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertEquals(ErrorMessages.PHONE_AND_PASSWORD_ARE_WRONG, errors.getNouserError());
         Assertions.assertNull(errors.getPhoneError());
         Assertions.assertNull(errors.getPasswordError());
@@ -206,7 +206,7 @@ public class LoginWithPhoneTest extends BaseTest {
         int statusCode = response.statusCode();
         PhoneLoginErrors errors = Errors.getErrorsFromPhoneLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertNull(errors.getNouserError());
         Assertions.assertEquals(ErrorMessages.PHONE_NUMBER_WAS_NOT_INPUT, errors.getPhoneError().getFirst());
         Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
@@ -236,7 +236,7 @@ public class LoginWithPhoneTest extends BaseTest {
         Response response = new LoginWithPhone().performPostRequest(formParams, cookies);
         int statusCode = response.statusCode();
 
-        Assertions.assertEquals(statusCode, 419);
+        Assertions.assertEquals(419, statusCode);
     }
 
     @Test
@@ -250,6 +250,6 @@ public class LoginWithPhoneTest extends BaseTest {
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken);
         int statusCode = response.statusCode();
 
-        Assertions.assertEquals(statusCode, 419);
+        Assertions.assertEquals(419, statusCode);
     }
 }

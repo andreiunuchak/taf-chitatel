@@ -18,6 +18,9 @@ public class SearchTest extends BaseTest {
     public void testBookSearch() {
         String productName = "A Game of Thrones: Book 1 of a Song of Ice and Fire";
         Response response = new Search().performGetRequest(productName);
+        int statusCode = response.statusCode();
+
+        Assertions.assertEquals(200, statusCode);
         Assertions.assertTrue(Responses.getSearchedProducts(response).getFirst().contains(productName));
     }
 }
