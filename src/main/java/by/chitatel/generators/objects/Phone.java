@@ -37,10 +37,12 @@ public class Phone {
         return String.format("+%s(%s)%s", countryCode, operatorCode, phoneNumber);
     }
 
-    public boolean equals(Phone o) {
+    @Override
+    public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null) return false;
-        return this.countryCode.equals(o.countryCode) && this.operatorCode.equals(o.operatorCode) && this.phoneNumber.equals(o.phoneNumber);
+        if (o == null || getClass() != o.getClass()) return false;
+        Phone phone = (Phone) o;
+        return Objects.equals(countryCode, phone.countryCode) && Objects.equals(operatorCode, phone.operatorCode) && Objects.equals(phoneNumber, phone.phoneNumber);
     }
 
     @Override

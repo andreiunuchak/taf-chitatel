@@ -7,8 +7,4 @@ public class EmailLoginResponse {
     public EmailLoginErrors getErrors() {
         return errors;
     }
-
-    public void setErrors(EmailLoginErrors errors) {
-        this.errors = errors;
-    }
 }

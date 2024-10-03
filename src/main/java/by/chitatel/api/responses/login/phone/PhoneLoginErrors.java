@@ -12,23 +12,11 @@ public class PhoneLoginErrors {
         return tel;
     }
 
-    public void setPhoneError(List<String> tel) {
-        this.tel = tel;
-    }
-
     public List<String> getPasswordError() {
         return password_phone;
     }
 
-    public void setPasswordError(List<String> password_phone) {
-        this.password_phone = password_phone;
-    }
-
-    public String getNouserError() {
+    public String getNoUserError() {
         return nouser;
-    }
-
-    public void setNouserError(String nouser) {
-        this.nouser = nouser;
     }
 }

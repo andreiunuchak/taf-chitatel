@@ -7,8 +7,4 @@ public class PhoneLoginResponse {
     public PhoneLoginErrors getErrors() {
         return errors;
     }
-
-    public void setErrors(PhoneLoginErrors errors) {
-        this.errors = errors;
-    }
 }

@@ -12,23 +12,11 @@ public class EmailLoginErrors {
         return email;
     }
 
-    public void setEmailError(List<String> email) {
-        this.email = email;
-    }
-
     public List<String> getPasswordError() {
         return password;
     }
 
-    public void setPasswordError(List<String> password) {
-        this.password = password;
-    }
-
     public String getNoUserError() {
         return nouser;
-    }
-
-    public void setNouserError(String nouser) {
-        this.nouser = nouser;
     }
 }
