@@ -72,10 +72,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError());
-        Assertions.assertNull(errors.getEmailError());
-        Assertions.assertNull(errors.getPasswordError());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
+                () -> Assertions.assertNull(errors.getEmailError()),
+                () -> Assertions.assertNull(errors.getPasswordError())
+        );
     }
 
     @Test
@@ -90,10 +92,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertNull(errors.getNoUserError());
-        Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst());
-        Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertNull(errors.getNoUserError()),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
+                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
+        );
     }
 
     @Test
@@ -108,10 +112,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertNull(errors.getNoUserError());
-        Assertions.assertNull(errors.getEmailError());
-        Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertNull(errors.getNoUserError()),
+                () -> Assertions.assertNull(errors.getEmailError()),
+                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
+        );
     }
 
     @Test
@@ -126,10 +132,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertNull(errors.getNoUserError());
-        Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst());
-        Assertions.assertNull(errors.getPasswordError());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertNull(errors.getNoUserError()),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
+                () -> Assertions.assertNull(errors.getPasswordError())
+        );
     }
 
     @Test
@@ -144,10 +152,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertNull(errors.getNoUserError());
-        Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst());
-        Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertNull(errors.getNoUserError()),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
+                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
+        );
     }
 
     @Test
@@ -162,10 +172,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError());
-        Assertions.assertNull(errors.getEmailError());
-        Assertions.assertNull(errors.getPasswordError());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
+                () -> Assertions.assertNull(errors.getEmailError()),
+                () -> Assertions.assertNull(errors.getPasswordError())
+        );
     }
 
     @Test
@@ -180,10 +192,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError());
-        Assertions.assertNull(errors.getEmailError());
-        Assertions.assertNull(errors.getPasswordError());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
+                () -> Assertions.assertNull(errors.getEmailError()),
+                () -> Assertions.assertNull(errors.getPasswordError())
+        );
     }
 
     @Test
@@ -197,10 +211,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertNull(errors.getNoUserError());
-        Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst());
-        Assertions.assertNull(errors.getPasswordError());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertNull(errors.getNoUserError()),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
+                () -> Assertions.assertNull(errors.getPasswordError())
+        );
     }
 
     @Test
@@ -214,10 +230,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertNull(errors.getNoUserError());
-        Assertions.assertNull(errors.getEmailError());
-        Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertNull(errors.getNoUserError()),
+                () -> Assertions.assertNull(errors.getEmailError()),
+                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
+        );
     }
 
     @Test
@@ -227,10 +245,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(statusCode, 200);
-        Assertions.assertNull(errors.getNoUserError());
-        Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst());
-        Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(statusCode, 200),
+                () -> Assertions.assertNull(errors.getNoUserError()),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
+                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
+        );
     }
 
     @Test
@@ -245,10 +265,12 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError());
-        Assertions.assertNull(errors.getEmailError());
-        Assertions.assertNull(errors.getPasswordError());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
+                () -> Assertions.assertNull(errors.getEmailError()),
+                () -> Assertions.assertNull(errors.getPasswordError())
+        );
     }
 
     @Test
@@ -263,9 +285,11 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError());
-        Assertions.assertNull(errors.getEmailError());
-        Assertions.assertNull(errors.getPasswordError());
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
+                () -> Assertions.assertNull(errors.getEmailError()),
+                () -> Assertions.assertNull(errors.getPasswordError())
+        );
     }
 }

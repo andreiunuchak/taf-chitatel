@@ -23,6 +23,7 @@ public class CartTest extends BaseTest {
         String productNameInCart = new HomePage()
                 .clickOnCartButton()
                 .getProductTitleInCart(0);
+
         Assertions.assertEquals(productName, productNameInCart);
     }
 }

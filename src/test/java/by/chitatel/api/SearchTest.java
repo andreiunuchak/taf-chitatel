@@ -20,7 +20,9 @@ public class SearchTest extends BaseTest {
         Response response = new Search().performGetRequest(productName);
         int statusCode = response.statusCode();
 
-        Assertions.assertEquals(200, statusCode);
-        Assertions.assertTrue(Responses.getSearchedProducts(response).getFirst().contains(productName));
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertTrue(Responses.getSearchedProducts(response).getFirst().contains(productName))
+        );
     }
 }
