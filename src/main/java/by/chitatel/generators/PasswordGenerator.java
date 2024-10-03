@@ -2,7 +2,7 @@ package by.chitatel.generators;
 
 import java.util.Random;
 
-public class Passwords {
+public class PasswordGenerator {
     public final static int MIN_ALLOWED_LENGTH = 6;
     public final static int MAX_ALLOWED_LENGTH = 255;
 

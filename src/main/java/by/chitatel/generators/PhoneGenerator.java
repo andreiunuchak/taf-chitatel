@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class Phones {
+public class PhoneGenerator {
     private static final String VALID_COUNTRY_CODE = CountryCodes.BELARUS.getCode();
     private static final List<String> VALID_OPERATOR_CODES = new ArrayList<>(Arrays.asList(OperatorCodes.VELCOM_OLD.getCode(), OperatorCodes.MTS.getCode(), OperatorCodes.VELCOM_NEW.getCode(), OperatorCodes.LIFE.getCode()));
     private static final String MOCKED_OPERATOR_CODE = OperatorCodes.MOCKED.getCode();

@@ -2,7 +2,7 @@ package by.chitatel.generators;
 
 import java.util.Random;
 
-public class Emails {
+public class EmailGenerator {
     private static final String ALLOWED_LOCAL_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&'*+/=?^_`{|}~-";
     private static final String ALLOWED_DOMAIN_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     private static final String INVALID_LOCAL_CHARS = "(),:;<>[]\\\" ";

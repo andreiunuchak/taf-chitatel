@@ -3,8 +3,8 @@ package by.chitatel.ui;
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.ui.modals.ErrorModal;
 import by.chitatel.ui.pages.HomePage;
-import by.chitatel.generators.Passwords;
-import by.chitatel.generators.Phones;
+import by.chitatel.generators.PasswordGenerator;
+import by.chitatel.generators.PhoneGenerator;
 import by.chitatel.generators.objects.Phone;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -24,7 +24,7 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .inputPhoneNumber(Phones.generateIncorrectPhoneNumber().getPhoneNumberWithOperatorCode())
+                .inputPhoneNumber(PhoneGenerator.generateIncorrectPhoneNumber().getPhoneNumberWithOperatorCode())
                 .clickSendCodeButton();
         Assertions.assertEquals(ErrorMessages.PHONE_NOT_FOUND, new ErrorModal().getErrorMessage());
     }
@@ -32,7 +32,7 @@ public class LoginWithPhoneTest extends BaseTest {
     @Test
     @DisplayName("UI Test of sending password to mock phone number")
     public void testSendPasswordWithMockPhone() {
-        Phone phone = Phones.generateMockPhoneNumber();
+        Phone phone = PhoneGenerator.generateMockPhoneNumber();
         String inputPhoneNumber = phone.getPhoneNumberWithOperatorCode();
         String fullPhoneNumber = phone.getPhoneNumberFull();
         new HomePage()
@@ -49,8 +49,8 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
-                .inputPassword(Passwords.generatePassword())
+                .inputPhoneNumber(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
+                .inputPassword(PasswordGenerator.generatePassword())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PASSWORD_DOES_NOT_MATCH, new ErrorModal().getErrorMessage());
     }
@@ -61,7 +61,7 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
+                .inputPhoneNumber(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
     }
@@ -72,8 +72,8 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .inputPhoneNumber(Phones.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
-                .inputPassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + new Random().nextInt(Passwords.MAX_ALLOWED_LENGTH)))
+                .inputPhoneNumber(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
+                .inputPassword(PasswordGenerator.generatePassword(PasswordGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(PasswordGenerator.MAX_ALLOWED_LENGTH)))
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PASSWORD_IS_TOO_LONG, new ErrorModal().getErrorMessage());
     }
@@ -84,7 +84,7 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .inputPassword(Passwords.generatePassword())
+                .inputPassword(PasswordGenerator.generatePassword())
                 .clickLoginButton();
         Assertions.assertEquals(ErrorMessages.PHONE_NUMBER_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
     }
@@ -95,7 +95,7 @@ public class LoginWithPhoneTest extends BaseTest {
         new HomePage()
                 .openPage()
                 .clickLoginButton()
-                .performLogin(Phones.generateInvalidPhoneNumber().getPhoneNumberWithOperatorCode(), Passwords.generatePassword(), true);
+                .performLogin(PhoneGenerator.generateInvalidPhoneNumber().getPhoneNumberWithOperatorCode(), PasswordGenerator.generatePassword(), true);
         Assertions.assertEquals(ErrorMessages.PHONE_NUMBER_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
     }
 }

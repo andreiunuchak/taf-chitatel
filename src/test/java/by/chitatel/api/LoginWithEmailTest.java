@@ -5,8 +5,8 @@ import by.chitatel.api.responses.login.email.EmailLoginErrors;
 import by.chitatel.api.utils.Errors;
 import by.chitatel.api.utils.FormParameters;
 import by.chitatel.constants.ErrorMessages;
-import by.chitatel.generators.Emails;
-import by.chitatel.generators.Passwords;
+import by.chitatel.generators.EmailGenerator;
+import by.chitatel.generators.PasswordGenerator;
 import by.chitatel.generators.enums.RememberMeCodes;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -36,8 +36,8 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API GET Test of email login")
     public void testGetRequest() {
         Map<String, Object> formParams = new FormParameters()
-                .setEmail(Emails.generateValidEmail())
-                .setPassword(Passwords.generatePassword())
+                .setEmail(EmailGenerator.generateValidEmail())
+                .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performGetRequest(formParams, csrfToken, cookies);
@@ -50,8 +50,8 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API HEAD Test of email login")
     public void testHeadRequest() {
         Map<String, Object> formParams = new FormParameters()
-                .setEmail(Emails.generateValidEmail())
-                .setPassword(Passwords.generatePassword())
+                .setEmail(EmailGenerator.generateValidEmail())
+                .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performHeadRequest(formParams, csrfToken, cookies);
@@ -64,8 +64,8 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API POST Test of email login with incorrect email")
     public void testLoginWithIncorrectEmailAndPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setEmail(Emails.generateValidEmail())
-                .setPassword(Passwords.generatePassword())
+                .setEmail(EmailGenerator.generateValidEmail())
+                .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
@@ -104,7 +104,7 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API POST Test of email login with incorrect email and empty password")
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setEmail(Emails.generateValidEmail())
+                .setEmail(EmailGenerator.generateValidEmail())
                 .setPassword("")
                 .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
                 .build();
@@ -125,7 +125,7 @@ public class LoginWithEmailTest extends BaseTest {
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParameters()
                 .setEmail("")
-                .setPassword(Passwords.generatePassword())
+                .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
@@ -204,7 +204,7 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API POST Test of email login without email parameter")
     public void testLoginWithoutEmailParameter() {
         Map<String, Object> formParams = new FormParameters()
-                .setPassword(Passwords.generatePassword())
+                .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
@@ -223,7 +223,7 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API POST Test of email login without password parameter")
     public void testLoginWithoutPasswordParameter() {
         Map<String, Object> formParams = new FormParameters()
-                .setEmail(Emails.generateValidEmail())
+                .setEmail(EmailGenerator.generateValidEmail())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
@@ -257,8 +257,8 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API POST Test of email login with long email and password")
     public void testLoginWithLongEmailAndLongPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setEmail(Emails.generateValidEmail(Emails.MAX_ALLOWED_LENGTH + new Random().nextInt(Emails.MAX_ALLOWED_LENGTH)))
-                .setPassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + new Random().nextInt(Passwords.MAX_ALLOWED_LENGTH)))
+                .setEmail(EmailGenerator.generateValidEmail(EmailGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(EmailGenerator.MAX_ALLOWED_LENGTH)))
+                .setPassword(PasswordGenerator.generatePassword(PasswordGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(PasswordGenerator.MAX_ALLOWED_LENGTH)))
                 .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);
@@ -277,8 +277,8 @@ public class LoginWithEmailTest extends BaseTest {
     @DisplayName("API POST Test of email login with invalid email")
     public void testLoginWithInvalidEmailAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setEmail(Emails.generateInvalidEmail())
-                .setPassword(Passwords.generatePassword())
+                .setEmail(EmailGenerator.generateInvalidEmail())
+                .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
                 .build();
         Response response = new LoginWithEmail().performPostRequest(formParams, csrfToken, cookies);

@@ -5,8 +5,8 @@ import by.chitatel.api.responses.login.phone.PhoneLoginErrors;
 import by.chitatel.api.utils.Errors;
 import by.chitatel.api.utils.FormParameters;
 import by.chitatel.constants.ErrorMessages;
-import by.chitatel.generators.Passwords;
-import by.chitatel.generators.Phones;
+import by.chitatel.generators.PasswordGenerator;
+import by.chitatel.generators.PhoneGenerator;
 import by.chitatel.generators.enums.RememberMeCodes;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -36,8 +36,8 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login with not formatted phone number")
     public void testPhoneLoginWithValidNotFormattedPhone() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFull())
-                .setPhonePassword(Passwords.generatePassword())
+                .setPhone(PhoneGenerator.generateIncorrectPhoneNumber().getPhoneNumberFull())
+                .setPhonePassword(PasswordGenerator.generatePassword())
                 .setPhoneRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -56,8 +56,8 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login without country and operator codes")
     public void testPhoneLoginWithPhoneThatDoesNotHaveCodes() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumber())
-                .setPhonePassword(Passwords.generatePassword())
+                .setPhone(PhoneGenerator.generateIncorrectPhoneNumber().getPhoneNumber())
+                .setPhonePassword(PasswordGenerator.generatePassword())
                 .setPhoneRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -76,8 +76,8 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login with short password")
     public void testPhoneLoginWithValidPhoneAndShortPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
-                .setPhonePassword(Passwords.generatePassword(Passwords.MIN_ALLOWED_LENGTH - 1))
+                .setPhone(PhoneGenerator.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
+                .setPhonePassword(PasswordGenerator.generatePassword(PasswordGenerator.MIN_ALLOWED_LENGTH - 1))
                 .setPhoneRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -96,8 +96,8 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login with long password")
     public void testPhoneLoginWithValidPhoneAndLongPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
-                .setPhonePassword(Passwords.generatePassword(Passwords.MAX_ALLOWED_LENGTH + 1))
+                .setPhone(PhoneGenerator.generateIncorrectPhoneNumber().getPhoneNumberFullFormatted())
+                .setPhonePassword(PasswordGenerator.generatePassword(PasswordGenerator.MAX_ALLOWED_LENGTH + 1))
                 .setPhoneRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -116,8 +116,8 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login with mock phone number and incorrect password")
     public void testPhoneLoginWithMockPhoneAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())
-                .setPhonePassword(Passwords.generatePassword())
+                .setPhone(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberFullFormatted())
+                .setPhonePassword(PasswordGenerator.generatePassword())
                 .setPhoneRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken, cookies);
@@ -136,7 +136,7 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login with mock phone number and empty password")
     public void testPhoneLoginWithMockPhoneAndEmptyPassword() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())
+                .setPhone(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberFullFormatted())
                 .setPhonePassword("")
                 .setPhoneRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
                 .build();
@@ -251,8 +251,8 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login without scrf-token")
     public void testPhoneLoginWithoutToken() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())
-                .setPhonePassword(Passwords.generatePassword())
+                .setPhone(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberFullFormatted())
+                .setPhonePassword(PasswordGenerator.generatePassword())
                 .setPhoneRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, cookies);
@@ -265,8 +265,8 @@ public class LoginWithPhoneTest extends BaseTest {
     @DisplayName("API POST Test of phone login without cookies")
     public void testPhoneLoginWithoutCookies() {
         Map<String, Object> formParams = new FormParameters()
-                .setPhone(Phones.generateMockPhoneNumber().getPhoneNumberFullFormatted())
-                .setPhonePassword(Passwords.generatePassword())
+                .setPhone(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberFullFormatted())
+                .setPhonePassword(PasswordGenerator.generatePassword())
                 .setPhoneRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
                 .build();
         Response response = new LoginWithPhone().performPostRequest(formParams, csrfToken);
