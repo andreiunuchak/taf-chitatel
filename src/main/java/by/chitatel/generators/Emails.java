@@ -43,7 +43,6 @@ public class Emails {
         String invalidDomainPart = generateRandomString(INVALID_DOMAIN_CHARS, random.nextInt(5) + 1);
         String invalidTopLevelDomain = generateRandomString(INVALID_DOMAIN_CHARS, random.nextInt(2) + 1);
 
-        // Формирование некорректного email с разными ошибками
         String[] invalidEmails = {
                 invalidLocalPart + "@" + invalidDomainPart + "." + invalidTopLevelDomain,
                 invalidLocalPart + "@example.com",
