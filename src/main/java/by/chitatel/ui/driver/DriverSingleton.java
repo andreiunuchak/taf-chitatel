@@ -15,8 +15,9 @@ public class DriverSingleton {
 
     public static WebDriver getWebDriver() {
         if (driver == null) {
-            String browser = System.getProperty("browser").toLowerCase();
-            switch (browser){
+            String browser = System.getProperty("browser");
+            browser = browser != null ? browser : "chrome";
+            switch (browser) {
                 case "firefox":
                     driver = new FirefoxDriver();
                     break;
