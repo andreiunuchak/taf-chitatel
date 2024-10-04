@@ -1,5 +1,7 @@
 package by.chitatel.ui;
 
+import by.chitatel.names.EpicNames;
+import by.chitatel.names.FeatureNames;
 import by.chitatel.ui.pages.HomePage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -7,8 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@Epic("UI Tests")
-@Feature("UI Tests of cart")
+@Epic(EpicNames.UI)
+@Feature(FeatureNames.UI_CART)
 public class CartTest extends BaseTest {
 
     @Test

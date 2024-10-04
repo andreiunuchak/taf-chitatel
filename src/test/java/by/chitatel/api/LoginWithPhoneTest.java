@@ -8,6 +8,8 @@ import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.PasswordGenerator;
 import by.chitatel.generators.PhoneGenerator;
 import by.chitatel.generators.enums.RememberMeCodes;
+import by.chitatel.names.EpicNames;
+import by.chitatel.names.FeatureNames;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
@@ -19,8 +21,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 import java.util.Random;
 
-@Epic("API Tests")
-@Feature("API Tests of phone login")
+@Epic(EpicNames.API)
+@Feature(FeatureNames.API_LOGIN_PHONE)
 public class LoginWithPhoneTest extends BaseTest {
 
     @Test

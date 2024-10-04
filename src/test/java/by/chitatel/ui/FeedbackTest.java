@@ -3,6 +3,8 @@ package by.chitatel.ui;
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.PhoneGenerator;
 import by.chitatel.generators.StringGenerator;
+import by.chitatel.names.EpicNames;
+import by.chitatel.names.FeatureNames;
 import by.chitatel.ui.modals.ErrorDialogPage;
 import by.chitatel.ui.modals.TopMenuPage;
 import by.chitatel.ui.pages.HomePage;
@@ -12,8 +14,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@Epic("UI Tests")
-@Feature("UI Tests of feedback")
+@Epic(EpicNames.UI)
+@Feature(FeatureNames.UI_FEEDBACK)
 public class FeedbackTest extends BaseTest {
 
     @Test

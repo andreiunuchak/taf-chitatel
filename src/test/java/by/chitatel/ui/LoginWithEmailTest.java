@@ -1,6 +1,8 @@
 package by.chitatel.ui;
 
 import by.chitatel.constants.ErrorMessages;
+import by.chitatel.names.EpicNames;
+import by.chitatel.names.FeatureNames;
 import by.chitatel.ui.modals.ErrorDialogPage;
 import by.chitatel.ui.pages.HomePage;
 import by.chitatel.generators.EmailGenerator;
@@ -13,8 +15,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-@Epic("UI Tests")
-@Feature("UI Tests of email login")
+@Epic(EpicNames.UI)
+@Feature(FeatureNames.UI_LOGIN_EMAIL)
 public class LoginWithEmailTest extends BaseTest {
 
     @Test

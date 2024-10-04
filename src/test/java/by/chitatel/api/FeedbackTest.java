@@ -7,6 +7,8 @@ import by.chitatel.api.utils.FormParametersFeedback;
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.PhoneGenerator;
 import by.chitatel.generators.StringGenerator;
+import by.chitatel.names.EpicNames;
+import by.chitatel.names.FeatureNames;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
@@ -16,8 +18,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-@Epic("API Tests")
-@Feature("API Tests of feedback")
+@Epic(EpicNames.API)
+@Feature(FeatureNames.API_FEEDBACK)
 public class FeedbackTest extends BaseTest {
 
     @Test
