@@ -58,6 +58,42 @@ public class FeedbackTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("UI Test of sending feedback without user name and phone number")
+    public void testFeedbackWithoutNameAndPhoneNumber() {
+        new HomePage().openPage();
+        new TopMenuPage()
+                .clickMenuContactsButton()
+                .inputTheme(StringGenerator.generateString(20))
+                .inputMessage(StringGenerator.generateString(50))
+                .clickSendButton();
+        Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_AND_PHONE_WERE_NOT_INPUT, new ErrorDialogPage().getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("UI Test of sending feedback without user name and message note")
+    public void testFeedbackWithoutNameAndMessage() {
+        new HomePage().openPage();
+        new TopMenuPage()
+                .clickMenuContactsButton()
+                .inputPhoneNumber(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberWithOperatorCode())
+                .inputTheme(StringGenerator.generateString(20))
+                .clickSendButton();
+        Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_AND_MESSAGE_WERE_NOT_INPUT, new ErrorDialogPage().getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("UI Test of sending feedback without phone number and message note")
+    public void testFeedbackWithoutPhoneNumberAndMessage() {
+        new HomePage().openPage();
+        new TopMenuPage()
+                .clickMenuContactsButton()
+                .inputName(StringGenerator.generateString(7))
+                .inputTheme(StringGenerator.generateString(20))
+                .clickSendButton();
+        Assertions.assertEquals(ErrorMessages.CONTACTS_PHONE_AND_MESSAGE_WERE_NOT_INPUT, new ErrorDialogPage().getErrorMessage());
+    }
+
+    @Test
     @DisplayName("UI Test of sending feedback with empty fields")
     public void testFeedbackEmptyForm() {
         new HomePage().openPage();

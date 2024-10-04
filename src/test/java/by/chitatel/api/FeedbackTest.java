@@ -83,6 +83,63 @@ public class FeedbackTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("API POST Test of sending feedback without user name and phone number")
+    public void testFeedbackWithoutNameAndPhone() {
+        Map<String, Object> formParams = new FormParametersFeedback()
+                .setTheme(StringGenerator.generateString(20))
+                .setMessage(StringGenerator.generateString(50))
+                .build();
+        Response response = new Feedback().performPostRequest(formParams, csrfToken, cookies);
+        int statusCode = response.statusCode();
+        FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT, errors.getMessageNameError().getFirst()),
+                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT, errors.getMessagePhoneError().getFirst()),
+                () -> Assertions.assertNull(errors.getMessageNoteError())
+        );
+    }
+
+    @Test
+    @DisplayName("API POST Test of sending feedback without user name and message note")
+    public void testFeedbackWithoutNameAndMessage() {
+        Map<String, Object> formParams = new FormParametersFeedback()
+                .setPhoneNumber(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberFullFormatted())
+                .setTheme(StringGenerator.generateString(20))
+                .build();
+        Response response = new Feedback().performPostRequest(formParams, csrfToken, cookies);
+        int statusCode = response.statusCode();
+        FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT, errors.getMessageNameError().getFirst()),
+                () -> Assertions.assertNull(errors.getMessagePhoneError()),
+                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT, errors.getMessageNoteError().getFirst())
+        );
+    }
+
+    @Test
+    @DisplayName("API POST Test of sending feedback without phone number and message note")
+    public void testFeedbackWithoutPhoneAndMessage() {
+        Map<String, Object> formParams = new FormParametersFeedback()
+                .setName(StringGenerator.generateString(7))
+                .setTheme(StringGenerator.generateString(20))
+                .build();
+        Response response = new Feedback().performPostRequest(formParams, csrfToken, cookies);
+        int statusCode = response.statusCode();
+        FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
+
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(200, statusCode),
+                () -> Assertions.assertNull(errors.getMessageNameError()),
+                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT, errors.getMessagePhoneError().getFirst()),
+                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT, errors.getMessageNoteError().getFirst())
+        );
+    }
+
+    @Test
     @DisplayName("API POST Test of sending feedback without parameters")
     public void testFeedbackWithoutParams() {
         Response response = new Feedback().performPostRequest(csrfToken, cookies);
