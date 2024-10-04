@@ -7,6 +7,6 @@ public class BaseTest {
 
     @AfterEach
     public void closeDriver() {
-        DriverSingleton.closeDriver();
+        DriverSingleton.closeWebDriver();
     }
 }
