@@ -3,7 +3,7 @@ package by.chitatel.api;
 import by.chitatel.api.endpoints.LoginWithEmail;
 import by.chitatel.api.responses.login.email.EmailLoginErrors;
 import by.chitatel.api.utils.Errors;
-import by.chitatel.api.utils.FormParameters;
+import by.chitatel.api.utils.FormParametersLoginEmail;
 import by.chitatel.constants.ErrorMessages;
 import by.chitatel.generators.EmailGenerator;
 import by.chitatel.generators.PasswordGenerator;
@@ -35,7 +35,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API GET Test of email login")
     public void testGetRequest() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
                 .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
@@ -49,7 +49,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API HEAD Test of email login")
     public void testHeadRequest() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
                 .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
@@ -63,7 +63,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with incorrect email")
     public void testLoginWithIncorrectEmailAndPassword() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
                 .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
@@ -83,7 +83,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with empty strings")
     public void testLoginWithEmptyParameters() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail("")
                 .setPassword("")
                 .setRememberMe("")
@@ -103,7 +103,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with incorrect email and empty password")
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
                 .setPassword("")
                 .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
@@ -123,7 +123,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with empty email")
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail("")
                 .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
@@ -143,7 +143,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with 'null' parameters")
     public void testLoginWithNullParameters() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(null)
                 .setPassword(null)
                 .setRememberMe(null)
@@ -163,7 +163,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with integer parameters")
     public void testLoginWithIntegerParameters() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(new Random().nextInt(1000000))
                 .setPassword(new Random().nextInt(1000000))
                 .setRememberMe(new Random().nextInt(1000000))
@@ -183,7 +183,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with boolean parameters")
     public void testLoginWithBooleanParameters() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(true)
                 .setPassword(false)
                 .setRememberMe(true)
@@ -203,7 +203,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login without email parameter")
     public void testLoginWithoutEmailParameter() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
@@ -222,7 +222,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login without password parameter")
     public void testLoginWithoutPasswordParameter() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
                 .setRememberMe(RememberMeCodes.SELECTED.getCode())
                 .build();
@@ -256,7 +256,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with long email and password")
     public void testLoginWithLongEmailAndLongPassword() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail(EmailGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(EmailGenerator.MAX_ALLOWED_LENGTH)))
                 .setPassword(PasswordGenerator.generatePassword(PasswordGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(PasswordGenerator.MAX_ALLOWED_LENGTH)))
                 .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())
@@ -276,7 +276,7 @@ public class LoginWithEmailTest extends BaseTest {
     @Test
     @DisplayName("API POST Test of email login with invalid email")
     public void testLoginWithInvalidEmailAndIncorrectPassword() {
-        Map<String, Object> formParams = new FormParameters()
+        Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateInvalidEmail())
                 .setPassword(PasswordGenerator.generatePassword())
                 .setRememberMe(RememberMeCodes.NOT_SELECTED.getCode())

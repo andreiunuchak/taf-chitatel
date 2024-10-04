@@ -1,15 +1,15 @@
 package by.chitatel.ui.pages;
 
-import by.chitatel.ui.modals.LoginPhoneModal;
+import by.chitatel.ui.modals.LoginPhoneDialogPage;
 import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
 
 public class HomePage extends BasePage {
     private final By loginButton = By.xpath("//a[@class='block__link login__link login_popup']/div[2]");
 
-    public LoginPhoneModal clickLoginButton() {
+    public LoginPhoneDialogPage clickLoginButton() {
         Waiters.waitForElementBeingClickable(driver, loginButton).click();
-        return new LoginPhoneModal();
+        return new LoginPhoneDialogPage();
     }
 
     @Override

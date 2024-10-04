@@ -1,7 +1,7 @@
 package by.chitatel.ui;
 
 import by.chitatel.constants.ErrorMessages;
-import by.chitatel.ui.modals.ErrorModal;
+import by.chitatel.ui.modals.ErrorDialogPage;
 import by.chitatel.ui.pages.HomePage;
 import by.chitatel.generators.EmailGenerator;
 import by.chitatel.generators.PasswordGenerator;
@@ -27,7 +27,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .inputEmail(EmailGenerator.generateValidEmail())
                 .inputPassword(PasswordGenerator.generatePassword())
                 .clickLoginButton();
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorModal().getErrorMessage());
+        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorDialogPage().getErrorMessage());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .clickTabEmail()
                 .inputEmail(EmailGenerator.generateValidEmail())
                 .clickLoginButton();
-        Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
+        Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, new ErrorDialogPage().getErrorMessage());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .clickTabEmail()
                 .inputPassword(PasswordGenerator.generatePassword())
                 .clickLoginButton();
-        Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, new ErrorModal().getErrorMessage());
+        Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, new ErrorDialogPage().getErrorMessage());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .clickLoginButton()
                 .clickTabEmail()
                 .clickLoginButton();
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_WERE_NOT_INPUT, new ErrorModal().getErrorMessage());
+        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_WERE_NOT_INPUT, new ErrorDialogPage().getErrorMessage());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class LoginWithEmailTest extends BaseTest {
                 .inputEmail(EmailGenerator.generateInvalidEmail())
                 .inputPassword(PasswordGenerator.generatePassword())
                 .clickLoginButton();
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorModal().getErrorMessage());
+        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorDialogPage().getErrorMessage());
     }
 
     @Test
@@ -89,6 +89,6 @@ public class LoginWithEmailTest extends BaseTest {
                         EmailGenerator.generateValidEmail(EmailGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(EmailGenerator.MAX_ALLOWED_LENGTH)),
                         PasswordGenerator.generatePassword(PasswordGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(PasswordGenerator.MAX_ALLOWED_LENGTH)),
                         false);
-        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorModal().getErrorMessage());
+        Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, new ErrorDialogPage().getErrorMessage());
     }
 }

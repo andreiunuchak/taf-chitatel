@@ -5,7 +5,7 @@ import by.chitatel.ui.pages.ForgotPasswordPage;
 import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
 
-public class LoginEmailModal extends BaseModal {
+public class LoginEmailDialogPage extends BaseDialogPage {
     private final By tabButtonEmail = By.xpath("//div[@class='w-swith-tabs margin-bottom-5 _js-bouble-tabs']/a[1]");
     private final By tabButtonPhone = By.xpath("//div[@class='w-swith-tabs margin-bottom-5 _js-bouble-tabs']/a[2]");
     private final By inputFieldEmail = By.xpath("//input[@name='email']");
@@ -15,22 +15,22 @@ public class LoginEmailModal extends BaseModal {
     private final By buttonLogin = By.xpath("//input[@id='send-login']");
     private final By buttonClose = By.xpath("//img[@class='close']");
 
-    public LoginEmailModal clickTabEmail() {
+    public LoginEmailDialogPage clickTabEmail() {
         Waiters.waitForElementBeingClickable(driver, tabButtonEmail).click();
         return this;
     }
 
-    public LoginEmailModal clickTabPhone() {
+    public LoginEmailDialogPage clickTabPhone() {
         Waiters.waitForElementBeingClickable(driver, tabButtonPhone).click();
         return this;
     }
 
-    public LoginEmailModal inputEmail(String email) {
+    public LoginEmailDialogPage inputEmail(String email) {
         Waiters.waitForElementPresence(driver, inputFieldEmail).sendKeys(email);
         return this;
     }
 
-    public LoginEmailModal inputPassword(String password) {
+    public LoginEmailDialogPage inputPassword(String password) {
         Waiters.waitForElementPresence(driver, inputFieldPassword).sendKeys(password);
         return this;
     }
@@ -40,7 +40,7 @@ public class LoginEmailModal extends BaseModal {
         return new ForgotPasswordPage();
     }
 
-    public LoginEmailModal clickRememberMeCheckbox() {
+    public LoginEmailDialogPage clickRememberMeCheckbox() {
         Waiters.waitForElementPresence(driver, checkboxRememberMe).click();
         return this;
     }

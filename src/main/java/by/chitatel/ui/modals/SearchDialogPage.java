@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class SearchModal extends BaseModal {
+public class SearchDialogPage extends BaseDialogPage {
     private final By searchResultItemBy = By.xpath("//div[@class='products ']");
     private final By searchResultItemTitleBy = By.xpath("./a/div/div[2]/div[1]/span");
     private final By searchResultItemAuthorBy = By.xpath("./a/div/div[2]/div[2]");

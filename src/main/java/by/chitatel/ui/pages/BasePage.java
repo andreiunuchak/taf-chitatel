@@ -1,7 +1,7 @@
 package by.chitatel.ui.pages;
 
 import by.chitatel.ui.driver.DriverSingleton;
-import by.chitatel.ui.modals.SearchModal;
+import by.chitatel.ui.modals.SearchDialogPage;
 import by.chitatel.ui.utils.Waiters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,9 +21,9 @@ public abstract class BasePage {
 
     public abstract BasePage openPage();
 
-    public SearchModal typeIntoSearchField(String text) {
+    public SearchDialogPage typeIntoSearchField(String text) {
         Waiters.waitForElementPresence(driver, searchFieldBy).sendKeys(text);
-        return new SearchModal();
+        return new SearchDialogPage();
     }
 
     public CartPage clickOnCartButton() {
