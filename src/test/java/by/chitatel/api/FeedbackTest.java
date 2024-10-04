@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-@Epic("APII Tests")
+@Epic("API Tests")
 @Feature("API Tests of feedback")
 public class FeedbackTest extends BaseTest {
 
