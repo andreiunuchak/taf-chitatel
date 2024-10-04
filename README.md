@@ -15,7 +15,7 @@ Test results and execution summaries are available in the Allure report after ea
 1. Clone the repository.
 2. Set up the necessary dependencies in your project (Java, Selenium, RestAssured, JUnit).
 3. Configure Jenkins for continuous test execution.
-4. Run tests using Maven command: "mvn clean test"
+4. Run tests on cpecified browser (chrome, firefox, edge, safari) using Maven command: "mvn clean test -Dbrowser=chrome"
 5. Generate reports using Maven Allure command: "mvn allure:serve" or "mvn allure:report"
 
 ## CI/CD Integration
