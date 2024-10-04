@@ -15,7 +15,7 @@ public class DriverSingleton {
 
     public static WebDriver getWebDriver() {
         if (driver == null) {
-            String browser = System.getProperty("browser");
+            String browser = System.getProperty("browser").toLowerCase();
             switch (browser){
                 case "firefox":
                     driver = new FirefoxDriver();
@@ -30,11 +30,11 @@ public class DriverSingleton {
                 default:
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--disable-search-engine-choice-screen");
-                    options.addArguments("--start-maximized");
                     driver = new ChromeDriver(options);
                     break;
             }
         }
+        driver.manage().window().maximize();
         return driver;
     }
 
