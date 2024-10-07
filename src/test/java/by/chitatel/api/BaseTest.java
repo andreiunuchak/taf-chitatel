@@ -5,13 +5,13 @@ import by.chitatel.api.utils.Responses;
 import io.restassured.RestAssured;
 import io.restassured.http.Cookies;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeEach;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
     protected String csrfToken;
     protected Cookies cookies;
 
-    @BeforeEach
+    @BeforeMethod
     public void getCSRFData() {
         RestAssured.baseURI = new BaseEndpoint().BASE_URL;
         Response response = new BaseEndpoint().performGetRequest();

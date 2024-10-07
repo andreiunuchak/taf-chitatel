@@ -11,10 +11,11 @@ import by.chitatel.names.EpicNames;
 import by.chitatel.names.FeatureNames;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Map;
 
@@ -22,8 +23,8 @@ import java.util.Map;
 @Feature(FeatureNames.API_FEEDBACK)
 public class FeedbackTest extends BaseTest {
 
-    @Test
-    @DisplayName("API POST Test of sending feedback without user name")
+    @Test(description = "API POST Test of sending feedback without user name")
+    @Severity(SeverityLevel.CRITICAL)
     public void testFeedbackWithoutName() {
         Map<String, Object> formParams = new FormParametersFeedback()
                 .setPhoneNumber(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberFullFormatted())
@@ -34,16 +35,15 @@ public class FeedbackTest extends BaseTest {
         int statusCode = response.statusCode();
         FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT, errors.getMessageNameError().getFirst()),
-                () -> Assertions.assertNull(errors.getMessagePhoneError()),
-                () -> Assertions.assertNull(errors.getMessageNoteError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getMessageNameError().getFirst(), ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT);
+        softAssert.assertNull(errors.getMessagePhoneError());
+        softAssert.assertNull(errors.getMessageNoteError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of sending feedback without phone number")
+    @Test(description = "API POST Test of sending feedback without phone number")
     public void testFeedbackWithoutPhoneNumber() {
         Map<String, Object> formParams = new FormParametersFeedback()
                 .setName(StringGenerator.generateString(7))
@@ -54,16 +54,15 @@ public class FeedbackTest extends BaseTest {
         int statusCode = response.statusCode();
         FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getMessageNameError()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT, errors.getMessagePhoneError().getFirst()),
-                () -> Assertions.assertNull(errors.getMessageNoteError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getMessageNameError());
+        softAssert.assertEquals(errors.getMessagePhoneError().getFirst(), ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT);
+        softAssert.assertNull(errors.getMessageNoteError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of sending feedback without message note")
+    @Test(description = "API POST Test of sending feedback without message note")
     public void testFeedbackWithoutMessage() {
         Map<String, Object> formParams = new FormParametersFeedback()
                 .setName(StringGenerator.generateString(7))
@@ -74,16 +73,15 @@ public class FeedbackTest extends BaseTest {
         int statusCode = response.statusCode();
         FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getMessageNameError()),
-                () -> Assertions.assertNull(errors.getMessagePhoneError()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT, errors.getMessageNoteError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getMessageNameError());
+        softAssert.assertNull(errors.getMessagePhoneError());
+        softAssert.assertEquals(errors.getMessageNoteError().getFirst(), ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of sending feedback without user name and phone number")
+    @Test(description = "API POST Test of sending feedback without user name and phone number")
     public void testFeedbackWithoutNameAndPhone() {
         Map<String, Object> formParams = new FormParametersFeedback()
                 .setTheme(StringGenerator.generateString(20))
@@ -93,16 +91,15 @@ public class FeedbackTest extends BaseTest {
         int statusCode = response.statusCode();
         FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT, errors.getMessageNameError().getFirst()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT, errors.getMessagePhoneError().getFirst()),
-                () -> Assertions.assertNull(errors.getMessageNoteError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getMessageNameError().getFirst(), ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT);
+        softAssert.assertEquals(errors.getMessagePhoneError().getFirst(), ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT);
+        softAssert.assertNull(errors.getMessageNoteError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of sending feedback without user name and message note")
+    @Test(description = "API POST Test of sending feedback without user name and message note")
     public void testFeedbackWithoutNameAndMessage() {
         Map<String, Object> formParams = new FormParametersFeedback()
                 .setPhoneNumber(PhoneGenerator.generateMockPhoneNumber().getPhoneNumberFullFormatted())
@@ -112,16 +109,15 @@ public class FeedbackTest extends BaseTest {
         int statusCode = response.statusCode();
         FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT, errors.getMessageNameError().getFirst()),
-                () -> Assertions.assertNull(errors.getMessagePhoneError()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT, errors.getMessageNoteError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getMessageNameError().getFirst(), ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT);
+        softAssert.assertNull(errors.getMessagePhoneError());
+        softAssert.assertEquals(errors.getMessageNoteError().getFirst(), ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of sending feedback without phone number and message note")
+    @Test(description = "API POST Test of sending feedback without phone number and message note")
     public void testFeedbackWithoutPhoneAndMessage() {
         Map<String, Object> formParams = new FormParametersFeedback()
                 .setName(StringGenerator.generateString(7))
@@ -131,26 +127,25 @@ public class FeedbackTest extends BaseTest {
         int statusCode = response.statusCode();
         FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getMessageNameError()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT, errors.getMessagePhoneError().getFirst()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT, errors.getMessageNoteError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getMessageNameError());
+        softAssert.assertEquals(errors.getMessagePhoneError().getFirst(), ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT);
+        softAssert.assertEquals(errors.getMessageNoteError().getFirst(), ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of sending feedback without parameters")
+    @Test(description = "API POST Test of sending feedback without parameters")
     public void testFeedbackWithoutParams() {
         Response response = new Feedback().performPostRequest(csrfToken, cookies);
         int statusCode = response.statusCode();
         FeedbackErrors errors = Errors.getErrorsFromFeedbackResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT, errors.getMessageNameError().getFirst()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT, errors.getMessagePhoneError().getFirst()),
-                () -> Assertions.assertEquals(ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT, errors.getMessageNoteError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getMessageNameError().getFirst(), ErrorMessages.CONTACTS_NAME_WAS_NOT_INPUT);
+        softAssert.assertEquals(errors.getMessagePhoneError().getFirst(), ErrorMessages.CONTACTS_PHONE_WAS_NOT_INPUT);
+        softAssert.assertEquals(errors.getMessageNoteError().getFirst(), ErrorMessages.CONTACTS_MESSAGE_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 }

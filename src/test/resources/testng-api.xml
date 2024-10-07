@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="API Suite">
+    <test name="API Test">
+        <classes>
+            <class name="by.chitatel.api.LoginWithEmailTest"/>
+            <class name="by.chitatel.api.LoginWithPhoneTest"/>
+            <class name="by.chitatel.api.FeedbackTest"/>
+            <class name="by.chitatel.api.SearchTest"/>
+        </classes>
+    </test>
+</suite>

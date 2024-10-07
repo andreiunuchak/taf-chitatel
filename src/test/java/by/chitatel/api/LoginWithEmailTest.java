@@ -14,9 +14,9 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.apache.http.HttpHeaders;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.Map;
 import java.util.Random;
@@ -25,17 +25,15 @@ import java.util.Random;
 @Feature(FeatureNames.API_LOGIN_EMAIL)
 public class LoginWithEmailTest extends BaseTest {
 
-    @Test
-    @DisplayName("API OPTIONS Test of allowed methods")
+    @Test(description = "API OPTIONS Test of allowed methods")
     public void testLoginEmailOptions() {
         Response response = new LoginWithEmail().performOptionsRequest(csrfToken, cookies);
         String allowedMethods = response.getHeader(HttpHeaders.ALLOW);
 
-        Assertions.assertEquals("GET,HEAD,POST", allowedMethods);
+        Assert.assertEquals(allowedMethods, "GET,HEAD,POST");
     }
 
-    @Test
-    @DisplayName("API GET Test of email login")
+    @Test(description = "API GET Test of email login")
     public void testGetRequest() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
@@ -45,11 +43,10 @@ public class LoginWithEmailTest extends BaseTest {
         Response response = new LoginWithEmail().performGetRequest(formParams, csrfToken, cookies);
         int statusCode = response.statusCode();
 
-        Assertions.assertEquals(200, statusCode);
+        Assert.assertEquals(statusCode, 200);
     }
 
-    @Test
-    @DisplayName("API HEAD Test of email login")
+    @Test(description = "API HEAD Test of email login")
     public void testHeadRequest() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
@@ -59,11 +56,10 @@ public class LoginWithEmailTest extends BaseTest {
         Response response = new LoginWithEmail().performHeadRequest(formParams, csrfToken, cookies);
         int statusCode = response.statusCode();
 
-        Assertions.assertEquals(200, statusCode);
+        Assert.assertEquals(statusCode, 200);
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with incorrect email")
+    @Test(description = "API POST Test of email login with incorrect email")
     public void testLoginWithIncorrectEmailAndPassword() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
@@ -74,16 +70,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
-                () -> Assertions.assertNull(errors.getEmailError()),
-                () -> Assertions.assertNull(errors.getPasswordError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getNoUserError(), ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG);
+        softAssert.assertNull(errors.getEmailError());
+        softAssert.assertNull(errors.getPasswordError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with empty strings")
+    @Test(description = "API POST Test of email login with empty strings")
     public void testLoginWithEmptyParameters() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail("")
@@ -94,16 +89,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getNoUserError()),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
-                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getNoUserError());
+        softAssert.assertEquals(errors.getEmailError().getFirst(), ErrorMessages.EMAIL_WAS_NOT_INPUT);
+        softAssert.assertEquals(errors.getPasswordError().getFirst(), ErrorMessages.PASSWORD_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with incorrect email and empty password")
+    @Test(description = "API POST Test of email login with incorrect email and empty password")
     public void testLoginWithIncorrectEmailAndEmptyPassword() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
@@ -114,16 +108,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getNoUserError()),
-                () -> Assertions.assertNull(errors.getEmailError()),
-                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getNoUserError());
+        softAssert.assertNull(errors.getEmailError());
+        softAssert.assertEquals(errors.getPasswordError().getFirst(), ErrorMessages.PASSWORD_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with empty email")
+    @Test(description = "API POST Test of email login with empty email")
     public void testLoginWithEmptyEmailAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail("")
@@ -134,16 +127,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getNoUserError()),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
-                () -> Assertions.assertNull(errors.getPasswordError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getNoUserError());
+        softAssert.assertEquals(errors.getEmailError().getFirst(), ErrorMessages.EMAIL_WAS_NOT_INPUT);
+        softAssert.assertNull(errors.getPasswordError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with 'null' parameters")
+    @Test(description = "API POST Test of email login with 'null' parameters")
     public void testLoginWithNullParameters() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(null)
@@ -154,16 +146,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getNoUserError()),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
-                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getNoUserError());
+        softAssert.assertEquals(errors.getEmailError().getFirst(), ErrorMessages.EMAIL_WAS_NOT_INPUT);
+        softAssert.assertEquals(errors.getPasswordError().getFirst(), ErrorMessages.PASSWORD_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with integer parameters")
+    @Test(description = "API POST Test of email login with integer parameters")
     public void testLoginWithIntegerParameters() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(new Random().nextInt(1000000))
@@ -174,16 +165,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
-                () -> Assertions.assertNull(errors.getEmailError()),
-                () -> Assertions.assertNull(errors.getPasswordError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getNoUserError(), ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG);
+        softAssert.assertNull(errors.getEmailError());
+        softAssert.assertNull(errors.getPasswordError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with boolean parameters")
+    @Test(description = "API POST Test of email login with boolean parameters")
     public void testLoginWithBooleanParameters() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(true)
@@ -194,16 +184,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
-                () -> Assertions.assertNull(errors.getEmailError()),
-                () -> Assertions.assertNull(errors.getPasswordError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getNoUserError(), ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG);
+        softAssert.assertNull(errors.getEmailError());
+        softAssert.assertNull(errors.getPasswordError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login without email parameter")
+    @Test(description = "API POST Test of email login without email parameter")
     public void testLoginWithoutEmailParameter() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setPassword(PasswordGenerator.generatePassword())
@@ -213,16 +202,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getNoUserError()),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
-                () -> Assertions.assertNull(errors.getPasswordError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getNoUserError());
+        softAssert.assertEquals(errors.getEmailError().getFirst(), ErrorMessages.EMAIL_WAS_NOT_INPUT);
+        softAssert.assertNull(errors.getPasswordError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login without password parameter")
+    @Test(description = "API POST Test of email login without password parameter")
     public void testLoginWithoutPasswordParameter() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail())
@@ -232,31 +220,29 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertNull(errors.getNoUserError()),
-                () -> Assertions.assertNull(errors.getEmailError()),
-                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getNoUserError());
+        softAssert.assertNull(errors.getEmailError());
+        softAssert.assertEquals(errors.getPasswordError().getFirst(), ErrorMessages.PASSWORD_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login without parameters")
+    @Test(description = "API POST Test of email login without parameters")
     public void testLoginWithoutParameters() {
         Response response = new LoginWithEmail().performPostRequest(csrfToken, cookies);
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(statusCode, 200),
-                () -> Assertions.assertNull(errors.getNoUserError()),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_WAS_NOT_INPUT, errors.getEmailError().getFirst()),
-                () -> Assertions.assertEquals(ErrorMessages.PASSWORD_WAS_NOT_INPUT, errors.getPasswordError().getFirst())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertNull(errors.getNoUserError());
+        softAssert.assertEquals(errors.getEmailError().getFirst(), ErrorMessages.EMAIL_WAS_NOT_INPUT);
+        softAssert.assertEquals(errors.getPasswordError().getFirst(), ErrorMessages.PASSWORD_WAS_NOT_INPUT);
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with long email and password")
+    @Test(description = "API POST Test of email login with long email and password")
     public void testLoginWithLongEmailAndLongPassword() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateValidEmail(EmailGenerator.MAX_ALLOWED_LENGTH + new Random().nextInt(EmailGenerator.MAX_ALLOWED_LENGTH)))
@@ -267,16 +253,15 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
-                () -> Assertions.assertNull(errors.getEmailError()),
-                () -> Assertions.assertNull(errors.getPasswordError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getNoUserError(), ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG);
+        softAssert.assertNull(errors.getEmailError());
+        softAssert.assertNull(errors.getPasswordError());
+        softAssert.assertAll();
     }
 
-    @Test
-    @DisplayName("API POST Test of email login with invalid email")
+    @Test(description = "API POST Test of email login with invalid email")
     public void testLoginWithInvalidEmailAndIncorrectPassword() {
         Map<String, Object> formParams = new FormParametersLoginEmail()
                 .setEmail(EmailGenerator.generateInvalidEmail())
@@ -287,11 +272,11 @@ public class LoginWithEmailTest extends BaseTest {
         int statusCode = response.statusCode();
         EmailLoginErrors errors = Errors.getErrorsFromEmailLoginResponse(response);
 
-        Assertions.assertAll(
-                () -> Assertions.assertEquals(200, statusCode),
-                () -> Assertions.assertEquals(ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG, errors.getNoUserError()),
-                () -> Assertions.assertNull(errors.getEmailError()),
-                () -> Assertions.assertNull(errors.getPasswordError())
-        );
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertEquals(statusCode, 200);
+        softAssert.assertEquals(errors.getNoUserError(), ErrorMessages.EMAIL_AND_PASSWORD_ARE_WRONG);
+        softAssert.assertNull(errors.getEmailError());
+        softAssert.assertNull(errors.getPasswordError());
+        softAssert.assertAll();
     }
 }

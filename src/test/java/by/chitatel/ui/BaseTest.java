@@ -1,11 +1,12 @@
 package by.chitatel.ui;
 
 import by.chitatel.ui.driver.DriverSingleton;
-import org.junit.jupiter.api.AfterEach;
+import org.testng.annotations.AfterTest;
+
 
 public class BaseTest {
 
-    @AfterEach
+    @AfterTest
     public void closeDriver() {
         DriverSingleton.closeWebDriver();
     }
