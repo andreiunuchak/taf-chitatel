@@ -12,27 +12,27 @@ public class ContactsPage extends BasePage {
     private final By buttonSendBy = By.xpath("//input[@id='send-message']");
 
     public ContactsPage inputName(String name) {
-        Waiters.waitForElementPresence(driver, inputFieldNameBy).sendKeys(name);
+        Waiters.waitForElementPresence(inputFieldNameBy).sendKeys(name);
         return this;
     }
 
     public ContactsPage inputPhoneNumber(String phone) {
-        Waiters.waitForElementPresence(driver, inputFieldPhoneBy).sendKeys(phone);
+        Waiters.waitForElementPresence(inputFieldPhoneBy).sendKeys(phone);
         return this;
     }
 
     public ContactsPage inputTheme(String theme) {
-        Waiters.waitForElementPresence(driver, inputFieldThemeBy).sendKeys(theme);
+        Waiters.waitForElementPresence(inputFieldThemeBy).sendKeys(theme);
         return this;
     }
 
     public ContactsPage inputMessage(String message) {
-        Waiters.waitForElementPresence(driver, inputFieldMessageBy).sendKeys(message);
+        Waiters.waitForElementPresence(inputFieldMessageBy).sendKeys(message);
         return this;
     }
 
     public void clickSendButton() {
-        Waiters.waitForElementPresence(driver, buttonSendBy).click();
+        Waiters.waitForElementPresence(buttonSendBy).click();
     }
 
 

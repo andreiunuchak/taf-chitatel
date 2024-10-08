@@ -15,42 +15,42 @@ public class LoginPhoneDialogPage extends BaseDialogPage {
     private final By buttonClose = By.xpath("//img[@class='close']");
 
     public LoginEmailDialogPage clickTabEmail() {
-        Waiters.waitForElementBeingClickable(driver, tabButtonEmail).click();
+        Waiters.waitForElementBeingClickable(tabButtonEmail).click();
         return new LoginEmailDialogPage();
     }
 
     public LoginPhoneDialogPage clickTabPhone() {
-        Waiters.waitForElementBeingClickable(driver, tabButtonPhone).click();
+        Waiters.waitForElementBeingClickable(tabButtonPhone).click();
         return this;
     }
 
     public LoginPhoneDialogPage inputPhoneNumber(String number) {
-        Waiters.waitForElementPresence(driver, inputFieldPhone).sendKeys(number);
+        Waiters.waitForElementPresence(inputFieldPhone).sendKeys(number);
         return this;
     }
 
     public LoginPhoneDialogPage clickSendCodeButton() {
-        Waiters.waitForElementBeingClickable(driver, butonSendPassword).click();
+        Waiters.waitForElementBeingClickable(butonSendPassword).click();
         return this;
     }
 
     public LoginPhoneDialogPage inputPassword(String password) {
-        Waiters.waitForElementPresence(driver, inputFieldPassword).sendKeys(password);
+        Waiters.waitForElementPresence(inputFieldPassword).sendKeys(password);
         return this;
     }
 
     public LoginPhoneDialogPage clickRememberMeCheckbox() {
-        Waiters.waitForElementBeingClickable(driver, checkboxRememberMe).click();
+        Waiters.waitForElementBeingClickable(checkboxRememberMe).click();
         return this;
     }
 
     public HomePage clickCloseButton() {
-        Waiters.waitForElementBeingClickable(driver, buttonClose).click();
+        Waiters.waitForElementBeingClickable(buttonClose).click();
         return new HomePage();
     }
 
     public void clickLoginButton() {
-        Waiters.waitForElementBeingClickable(driver, buttonLogin).click();
+        Waiters.waitForElementBeingClickable(buttonLogin).click();
     }
 
     public void performLogin(String phoneNumber, String password, boolean toggleRememberMe) {

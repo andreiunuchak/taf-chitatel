@@ -14,31 +14,31 @@ public class TopMenuPage extends BaseDialogPage {
     private final By menuContactsButtonBy = By.xpath("//ul[@class='main-menu']/li[7]");
 
     public void clickMenuMainButton() {
-        Waiters.waitForElementBeingClickable(driver, menuMainButtonBy).click();
+        Waiters.waitForElementBeingClickable(menuMainButtonBy).click();
     }
 
     public void clickMenuDeliveryButton() {
-        Waiters.waitForElementBeingClickable(driver, menuDeliveryButtonBy).click();
+        Waiters.waitForElementBeingClickable(menuDeliveryButtonBy).click();
     }
 
     public void clickMenuPaymentsButton() {
-        Waiters.waitForElementBeingClickable(driver, menuPaymentsButtonBy).click();
+        Waiters.waitForElementBeingClickable(menuPaymentsButtonBy).click();
     }
 
     public void clickMenuHowToOrderButton() {
-        Waiters.waitForElementBeingClickable(driver, menuHowToOrderButtonBy).click();
+        Waiters.waitForElementBeingClickable(menuHowToOrderButtonBy).click();
     }
 
     public void clickMenuDiscountsButton() {
-        Waiters.waitForElementBeingClickable(driver, menuDiscountsButtonBy).click();
+        Waiters.waitForElementBeingClickable(menuDiscountsButtonBy).click();
     }
 
     public void clickMenuNewsButton() {
-        Waiters.waitForElementBeingClickable(driver, menuNewsButtonBy).click();
+        Waiters.waitForElementBeingClickable(menuNewsButtonBy).click();
     }
 
     public ContactsPage clickMenuContactsButton() {
-        Waiters.waitForElementBeingClickable(driver, menuContactsButtonBy).click();
+        Waiters.waitForElementBeingClickable(menuContactsButtonBy).click();
         return new ContactsPage();
     }
 }

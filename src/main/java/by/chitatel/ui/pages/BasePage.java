@@ -22,28 +22,20 @@ public abstract class BasePage {
     public abstract BasePage openPage();
 
     public SearchDialogPage typeIntoSearchField(String text) {
-        Waiters.waitForElementPresence(driver, searchFieldBy).sendKeys(text);
+        Waiters.waitForElementPresence(searchFieldBy).sendKeys(text);
         return new SearchDialogPage();
     }
 
     public CartPage clickOnCartButton() {
-        Waiters.waitForElementPresence(driver, cartButtonBy).click();
+        Waiters.waitForElementPresence(cartButtonBy).click();
         return new CartPage();
     }
 
     protected void waitForCartUpdate(String initialAmountOfItemsInCart) {
-        int attempt = 0;
-        while (getAmountOfItemsInCart().equals(initialAmountOfItemsInCart) && attempt < MAX_CART_UPDATE_ATTEMPTS) {
-            attempt++;
-            try {
-                Thread.sleep(DEFAULT_WAIT_TIME_MILLISECONDS);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        Waiters.waitForElementTextToBe(cartCountBy, String.valueOf(Integer.parseInt(getAmountOfItemsInCart())+1));
     }
 
     protected String getAmountOfItemsInCart() {
-        return Waiters.waitForElementPresence(driver, cartCountBy).getText();
+        return Waiters.waitForElementPresence(cartCountBy).getText();
     }
 }
