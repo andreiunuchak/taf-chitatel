@@ -31,8 +31,8 @@ public abstract class BasePage {
         return new CartPage();
     }
 
-    protected void waitForCartUpdate(String initialAmountOfItemsInCart) {
-        Waiters.waitForElementTextToBe(cartCountBy, String.valueOf(Integer.parseInt(getAmountOfItemsInCart())+1));
+    protected void waitForCartUpdate(String expectedAmountOfItemsInCart) {
+        Waiters.waitForElementTextToBe(cartCountBy, expectedAmountOfItemsInCart);
     }
 
     protected String getAmountOfItemsInCart() {

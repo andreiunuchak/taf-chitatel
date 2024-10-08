@@ -26,7 +26,8 @@ public class ProductPage extends BasePage {
     public ProductPage clickOnAddToCartButton() {
         String initialAmountOfItemsInCart = getAmountOfItemsInCart();
         Waiters.waitForElementPresence(addToCartButtonBy).click();
-        waitForCartUpdate(initialAmountOfItemsInCart);
+        String expectedAmountOfItemsInCart = String.valueOf(Integer.parseInt(initialAmountOfItemsInCart) + 1);
+        waitForCartUpdate(expectedAmountOfItemsInCart);
         return this;
     }
 }
