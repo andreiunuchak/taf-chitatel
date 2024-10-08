@@ -16,42 +16,42 @@ public class LoginEmailDialogPage extends BaseDialogPage {
     private final By buttonClose = By.xpath("//img[@class='close']");
 
     public LoginEmailDialogPage clickTabEmail() {
-        Waiters.waitForElementBeingClickable(driver, tabButtonEmail).click();
+        Waiters.waitForElementBeingClickable(tabButtonEmail).click();
         return this;
     }
 
     public LoginEmailDialogPage clickTabPhone() {
-        Waiters.waitForElementBeingClickable(driver, tabButtonPhone).click();
+        Waiters.waitForElementBeingClickable(tabButtonPhone).click();
         return this;
     }
 
     public LoginEmailDialogPage inputEmail(String email) {
-        Waiters.waitForElementPresence(driver, inputFieldEmail).sendKeys(email);
+        Waiters.waitForElementPresence(inputFieldEmail).sendKeys(email);
         return this;
     }
 
     public LoginEmailDialogPage inputPassword(String password) {
-        Waiters.waitForElementPresence(driver, inputFieldPassword).sendKeys(password);
+        Waiters.waitForElementPresence(inputFieldPassword).sendKeys(password);
         return this;
     }
 
     public ForgotPasswordPage clickForgotPasswordButton() {
-        Waiters.waitForElementBeingClickable(driver, buttonForgotPassword).click();
+        Waiters.waitForElementBeingClickable(buttonForgotPassword).click();
         return new ForgotPasswordPage();
     }
 
     public LoginEmailDialogPage clickRememberMeCheckbox() {
-        Waiters.waitForElementPresence(driver, checkboxRememberMe).click();
+        Waiters.waitForElementPresence(checkboxRememberMe).click();
         return this;
     }
 
     public HomePage clickCloseButton() {
-        Waiters.waitForElementBeingClickable(driver, buttonClose).click();
+        Waiters.waitForElementBeingClickable(buttonClose).click();
         return new HomePage();
     }
 
     public void clickLoginButton() {
-        Waiters.waitForElementBeingClickable(driver, buttonLogin).click();
+        Waiters.waitForElementBeingClickable(buttonLogin).click();
     }
 
     public void performLogin(String email, String password, boolean toggleRememberMe) {

@@ -8,7 +8,7 @@ public class HomePage extends BasePage {
     private final By loginButton = By.xpath("//a[@class='block__link login__link login_popup']/div[2]");
 
     public LoginPhoneDialogPage clickLoginButton() {
-        Waiters.waitForElementBeingClickable(driver, loginButton).click();
+        Waiters.waitForElementBeingClickable(loginButton).click();
         return new LoginPhoneDialogPage();
     }
 

@@ -16,16 +16,16 @@ public class ProductPage extends BasePage {
     }
 
     public String getTitle() {
-        return Waiters.waitForElementPresence(driver, titleBy).getText();
+        return Waiters.waitForElementPresence(titleBy).getText();
     }
 
     public String getPrice() {
-        return Waiters.waitForElementPresence(driver, priceBy).getText();
+        return Waiters.waitForElementPresence(priceBy).getText();
     }
 
     public ProductPage clickOnAddToCartButton() {
         String initialAmountOfItemsInCart = getAmountOfItemsInCart();
-        Waiters.waitForElementPresence(driver, addToCartButtonBy).click();
+        Waiters.waitForElementPresence(addToCartButtonBy).click();
         waitForCartUpdate(initialAmountOfItemsInCart);
         return this;
     }

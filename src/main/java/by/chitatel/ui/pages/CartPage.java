@@ -19,7 +19,7 @@ public class CartPage extends BasePage {
     }
 
     public List<WebElement> getProductsInCart() {
-        return Waiters.waitForElementsPresence(driver, cartItemBy);
+        return Waiters.waitForElementsPresence(cartItemBy);
     }
 
     public String getProductTitleInCart(int index) {

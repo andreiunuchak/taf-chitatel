@@ -9,14 +9,14 @@ public class ErrorDialogPage extends BaseDialogPage {
     private final By buttonOk = By.xpath("//button[@class='confirm']");
 
     public String getTitle() {
-        return Waiters.waitForElementPresence(driver, title).getText();
+        return Waiters.waitForElementPresence(title).getText();
     }
 
     public String getErrorMessage() {
-        return Waiters.waitForElementPresence(driver, errorMessage).getText();
+        return Waiters.waitForElementPresence(errorMessage).getText();
     }
 
     public void clickButtonOk() {
-        Waiters.waitForElementBeingClickable(driver, buttonOk).click();
+        Waiters.waitForElementBeingClickable(buttonOk).click();
     }
 }

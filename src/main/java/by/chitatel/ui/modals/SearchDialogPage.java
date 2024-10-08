@@ -14,11 +14,11 @@ public class SearchDialogPage extends BaseDialogPage {
     private final By searchResultItemPriceBy = By.xpath("./a/div/div[2]/div[3]/div/div[1]");
 
     public List<WebElement> getSearchResults() {
-        return Waiters.waitForElementsPresence(driver, searchResultItemBy);
+        return Waiters.waitForElementsPresence(searchResultItemBy);
     }
 
     public ProductPage clickOnSearchResultItem(int index) {
-        Waiters.waitForElementsPresence(driver, searchResultItemBy).get(index).click();
+        Waiters.waitForElementsPresence(searchResultItemBy).get(index).click();
         return new ProductPage();
     }
 
