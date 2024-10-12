@@ -8,39 +8,42 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 public class DriverSingleton {
-    private static WebDriver driver;
+    //    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     private DriverSingleton() {
     }
 
     public static WebDriver getWebDriver() {
-        if (driver == null) {
+        if (driver.get() == null) {
             String browser = System.getProperty("browser");
             browser = browser != null ? browser : "chrome";
             switch (browser) {
                 case "firefox":
-                    driver = new FirefoxDriver();
+                    driver.set(new FirefoxDriver());
                     break;
                 case "edge":
-                    driver = new EdgeDriver();
+                    driver.set(new EdgeDriver());
                     break;
                 case "safari":
-                    driver = new SafariDriver();
+                    driver.set(new SafariDriver());
                     break;
                 case "chrome":
                 default:
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--disable-search-engine-choice-screen");
-                    driver = new ChromeDriver(options);
+                    driver.set(new ChromeDriver(options));
                     break;
             }
         }
-        driver.manage().window().maximize();
-        return driver;
+        driver.get().manage().window().maximize();
+        return driver.get();
     }
 
     public static void closeWebDriver() {
-        driver.quit();
-        driver = null;
+        if (driver.get() != null) {
+            driver.get().quit();
+            driver.remove();
+        }
     }
 }
