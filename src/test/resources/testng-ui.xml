@@ -1,5 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="UI Suite">
+    <listeners>
+        <listener class-name="by.chitatel.listeners.ScreenshotListener"/>
+    </listeners>
     <test name="UI Test">
         <classes>
             <class name="by.chitatel.ui.LoginWithEmailTest"/>
