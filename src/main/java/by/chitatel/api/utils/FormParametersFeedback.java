@@ -1,6 +1,7 @@
 package by.chitatel.api.utils;
 
 public class FormParametersFeedback extends FormParameters {
+
     public FormParametersFeedback setName(Object rememberMe) {
         formParams.put("message_name", rememberMe);
         return this;

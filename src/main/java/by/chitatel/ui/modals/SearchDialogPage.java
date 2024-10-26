@@ -2,6 +2,7 @@ package by.chitatel.ui.modals;
 
 import by.chitatel.ui.pages.ProductPage;
 import by.chitatel.ui.utils.Waiters;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -17,6 +18,7 @@ public class SearchDialogPage extends BaseDialogPage {
         return Waiters.waitForElementsPresence(searchResultItemBy);
     }
 
+    @Step("Click on the item in the search results list")
     public ProductPage clickOnSearchResultItem(int index) {
         Waiters.waitForElementsPresence(searchResultItemBy).get(index).click();
         return new ProductPage();

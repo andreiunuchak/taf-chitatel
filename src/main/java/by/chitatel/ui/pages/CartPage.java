@@ -1,6 +1,7 @@
 package by.chitatel.ui.pages;
 
 import by.chitatel.ui.utils.Waiters;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -13,6 +14,7 @@ public class CartPage extends BasePage {
     private final By cartItemPriceBy = By.xpath(".//div[7]/div[3]");
 
     @Override
+    @Step("Open page " + CART_PAGE_URL)
     public CartPage openPage() {
         driver.navigate().to(CART_PAGE_URL);
         return this;

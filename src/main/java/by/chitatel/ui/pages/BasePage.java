@@ -3,6 +3,7 @@ package by.chitatel.ui.pages;
 import by.chitatel.ui.driver.DriverSingleton;
 import by.chitatel.ui.modals.SearchDialogPage;
 import by.chitatel.ui.utils.Waiters;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -21,11 +22,13 @@ public abstract class BasePage {
 
     public abstract BasePage openPage();
 
+    @Step("Type product name into the search field")
     public SearchDialogPage typeIntoSearchField(String text) {
         Waiters.waitForElementPresence(searchFieldBy).sendKeys(text);
         return new SearchDialogPage();
     }
 
+    @Step("Click on the 'Cart' button")
     public CartPage clickOnCartButton() {
         Waiters.waitForElementPresence(cartButtonBy).click();
         return new CartPage();

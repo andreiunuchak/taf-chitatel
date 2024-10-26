@@ -2,6 +2,7 @@ package by.chitatel.ui.modals;
 
 import by.chitatel.ui.pages.HomePage;
 import by.chitatel.ui.utils.Waiters;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LoginPhoneDialogPage extends BaseDialogPage {
@@ -14,41 +15,49 @@ public class LoginPhoneDialogPage extends BaseDialogPage {
     private final By buttonLogin = By.xpath("//input[@id='send-login-by-phone']");
     private final By buttonClose = By.xpath("//img[@class='close']");
 
+    @Step("Click on the 'Email' tab")
     public LoginEmailDialogPage clickTabEmail() {
         Waiters.waitForElementBeingClickable(tabButtonEmail).click();
         return new LoginEmailDialogPage();
     }
 
+    @Step("Click on the 'Phone' tab")
     public LoginPhoneDialogPage clickTabPhone() {
         Waiters.waitForElementBeingClickable(tabButtonPhone).click();
         return this;
     }
 
+    @Step("Input phone number")
     public LoginPhoneDialogPage inputPhoneNumber(String number) {
         Waiters.waitForElementPresence(inputFieldPhone).sendKeys(number);
         return this;
     }
 
+    @Step("Click on the 'Send code' button")
     public LoginPhoneDialogPage clickSendCodeButton() {
         Waiters.waitForElementBeingClickable(butonSendPassword).click();
         return this;
     }
 
+    @Step("Input password")
     public LoginPhoneDialogPage inputPassword(String password) {
         Waiters.waitForElementPresence(inputFieldPassword).sendKeys(password);
         return this;
     }
 
+    @Step("Click on the 'Remember me' checkbox")
     public LoginPhoneDialogPage clickRememberMeCheckbox() {
         Waiters.waitForElementBeingClickable(checkboxRememberMe).click();
         return this;
     }
 
+    @Step("Click on the close button")
     public HomePage clickCloseButton() {
         Waiters.waitForElementBeingClickable(buttonClose).click();
         return new HomePage();
     }
 
+    @Step("Click on the 'Login' button")
     public void clickLoginButton() {
         Waiters.waitForElementBeingClickable(buttonLogin).click();
     }

@@ -1,6 +1,7 @@
 package by.chitatel.ui.modals;
 
 import by.chitatel.ui.utils.Waiters;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ErrorDialogPage extends BaseDialogPage {
@@ -16,6 +17,7 @@ public class ErrorDialogPage extends BaseDialogPage {
         return Waiters.waitForElementPresence(errorMessage).getText();
     }
 
+    @Step("Click on the 'Ok' button")
     public void clickButtonOk() {
         Waiters.waitForElementBeingClickable(buttonOk).click();
     }

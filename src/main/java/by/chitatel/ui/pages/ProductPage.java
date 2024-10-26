@@ -1,6 +1,7 @@
 package by.chitatel.ui.pages;
 
 import by.chitatel.ui.utils.Waiters;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class ProductPage extends BasePage {
@@ -10,6 +11,7 @@ public class ProductPage extends BasePage {
     private final By addToCartButtonBy = By.xpath("//div[contains(@class, 'button medium')]");
 
     @Override
+    @Step("Open page " + PRODUCT_PAGE_URL)
     public ProductPage openPage() {
         driver.navigate().to(PRODUCT_PAGE_URL);
         return this;
@@ -23,6 +25,7 @@ public class ProductPage extends BasePage {
         return Waiters.waitForElementPresence(priceBy).getText();
     }
 
+    @Step("click on 'Add to Cart' the button")
     public ProductPage clickOnAddToCartButton() {
         String initialAmountOfItemsInCart = getAmountOfItemsInCart();
         Waiters.waitForElementPresence(addToCartButtonBy).click();
